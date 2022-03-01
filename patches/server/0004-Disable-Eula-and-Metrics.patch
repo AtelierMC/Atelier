@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+Date: Tue, 1 Mar 2022 20:18:16 +0700
+Subject: [PATCH] Disable Eula and Metrics
+
+
+diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
+index 7560d20c4294a40883416f0cc3fcafb96a2bdba0..56807084f7c0bcebd7cceed0b969c7a19096c6a9 100644
+--- a/src/main/java/com/destroystokyo/paper/PaperConfig.java
++++ b/src/main/java/com/destroystokyo/paper/PaperConfig.java
+@@ -51,7 +51,7 @@ public class PaperConfig {
+     private static boolean verbose;
+     private static boolean fatalError;
+     /*========================================================================*/
+-    private static boolean metricsStarted;
++    private static boolean metricsStarted = true; // AtelierSMP - Disable Metrics
+ 
+     public static void init(File configFile) {
+         CONFIG_FILE = configFile;
+diff --git a/src/main/java/net/minecraft/server/Eula.java b/src/main/java/net/minecraft/server/Eula.java
+index a1d5c0f8fe2adb2ee56f3217e089211ec7c61eb0..07f77a659b3b1d9568a1a4890ffadb60a1fb5755 100644
+--- a/src/main/java/net/minecraft/server/Eula.java
++++ b/src/main/java/net/minecraft/server/Eula.java
+@@ -16,7 +16,7 @@ public class Eula {
+ 
+     public Eula(Path eulaFile) {
+         this.file = eulaFile;
+-        this.agreed = SharedConstants.IS_RUNNING_IN_IDE || this.readFile();
++        this.agreed = true; // AtelierSMP - We always agree to the EULA
+     }
+ 
+     private boolean readFile() {

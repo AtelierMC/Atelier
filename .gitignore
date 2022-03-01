@@ -1,36 +1,26 @@
-# JVM crash related
-core.*
-hs_err_pid*
+.gradle/
 
-# Intellij
-.idea/
-*.iml
-*.ipr
-*.iws
-out/
-
-# Eclipse
+# Eclipse stuff
 .classpath
 .project
 .settings/
+
+# VSCode stuff
+.vscode/
 
 # netbeans
 nbproject/
 nbactions.xml
 
-# Gradle
-!gradle-wrapper.jar
-.gradle/
-build/
-*/build/
-
 # we use maven!
 build.xml
 
-# Maven
-log/
+# maven
 target/
 dependency-reduced-pom.xml
+
+# vim
+.*.sw[a-p]
 
 # various other potential build files
 build/
@@ -38,12 +28,16 @@ bin/
 dist/
 manifest.mf
 
-# Mac
+# Mac filesystem dust
 .DS_Store/
 .DS_Store
 
-# vim
-.*.sw[a-p]
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
 
 # Linux temp files
 *~
@@ -51,8 +45,7 @@ manifest.mf
 # other stuff
 run/
 
-build-data/
 AtelierSMP-API
-AtelierSMP-MojangAPI
 AtelierSMP-Server
-*.jar
+
+!gradle/wrapper/gradle-wrapper.jar

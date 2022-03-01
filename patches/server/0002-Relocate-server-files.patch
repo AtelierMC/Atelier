@@ -1,0 +1,107 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+Date: Tue, 1 Mar 2022 20:10:45 +0700
+Subject: [PATCH] Relocate server files
+
+
+diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
+index 17bc75a0f0e665a3b7abaaf2bf197abe3cd2af20..edc1e27764ece52614f092cf3f7c0a602e2f8eaf 100644
+--- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
++++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
+@@ -55,7 +55,7 @@ public class PufferfishConfig {
+ 	}
+ 	
+ 	public static void load() throws IOException {
+-		File configFile = new File("pufferfish.yml");
++		File configFile = new File("config", "pufferfish.yml"); // AtelierSMP - Relocate files
+ 		
+ 		if (configFile.exists()) {
+ 			try {
+diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
+index e2c8f716af55ebb7e4233c2a3d6515f8f4a239fa..93f21bc3e5ee515e60faeb9ea8232783a4e1c1fd 100644
+--- a/src/main/java/net/minecraft/server/Main.java
++++ b/src/main/java/net/minecraft/server/Main.java
+@@ -138,12 +138,12 @@ public class Main {
+             org.spigotmc.SpigotConfig.disabledAdvancements = spigotConfiguration.getStringList("advancements.disabled"); // Paper - fix SPIGOT-5885, must be set early in init
+             // Paper start - fix SPIGOT-5824
+             File file;
+-            File userCacheFile = new File("usercache.json");
++            File userCacheFile = new File("storage", "usercache.json"); // AtelierSMP - Relocate files
+             if (optionset.has("universe")) {
+                 file = (File) optionset.valueOf("universe"); // CraftBukkit
+                 userCacheFile = new File(file, "usercache.json");
+             } else {
+-                file = new File(bukkitConfiguration.getString("settings.world-container", "."));
++                file = new File("worlds"); // AtelierSMP - Use 'worlds' folder by default
+             }
+             // Paper end - fix SPIGOT-5824
+             YggdrasilAuthenticationService yggdrasilauthenticationservice = new com.destroystokyo.paper.profile.PaperAuthenticationService(Proxy.NO_PROXY); // Paper
+diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
+index ebddd006afe4960ac90642d4683c5cc8ef0ac33e..20a4925dbee30a4ff2bd9ab78c538cd6bdbdf92b 100644
+--- a/src/main/java/net/minecraft/server/players/PlayerList.java
++++ b/src/main/java/net/minecraft/server/players/PlayerList.java
+@@ -122,10 +122,12 @@ import org.bukkit.event.player.PlayerRespawnEvent;
+ 
+ public abstract class PlayerList {
+ 
+-    public static final File USERBANLIST_FILE = new File("banned-players.json");
+-    public static final File IPBANLIST_FILE = new File("banned-ips.json");
+-    public static final File OPLIST_FILE = new File("ops.json");
+-    public static final File WHITELIST_FILE = new File("whitelist.json");
++    // AtelierSMP start - Relocate files
++    public static final File USERBANLIST_FILE = new File("storage", "banned-players.json");
++    public static final File IPBANLIST_FILE = new File("storage", "banned-ips.json");
++    public static final File OPLIST_FILE = new File("storage", "ops.json");
++    public static final File WHITELIST_FILE = new File("storage", "whitelist.json");
++    // AtelierSMP end
+     private static final Logger LOGGER = LogManager.getLogger();
+     private static final int SEND_PLAYER_INFO_INTERVAL = 600;
+     private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index 6766e022f94d5604fcaf39a6ff5e70d82d764726..34bd10c2d99f953cb100eea12f0133d93bc7051b 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -110,7 +110,7 @@ public class Main {
+                 acceptsAll(Main.asList("b", "bukkit-settings"), "File for bukkit settings")
+                         .withRequiredArg()
+                         .ofType(File.class)
+-                        .defaultsTo(new File("bukkit.yml"))
++                        .defaultsTo(new File("config", "bukkit.yml")) // AtelierSMP - Relocate files
+                         .describedAs("Yml file");
+ 
+                 acceptsAll(Main.asList("C", "commands-settings"), "File for command settings")
+@@ -135,7 +135,7 @@ public class Main {
+                 acceptsAll(Main.asList("S", "spigot-settings"), "File for spigot settings")
+                         .withRequiredArg()
+                         .ofType(File.class)
+-                        .defaultsTo(new File("spigot.yml"))
++                        .defaultsTo(new File("config", "spigot.yml")) // AtelierSMP - Relocate files
+                         .describedAs("Yml file");
+                 // Spigot End
+ 
+@@ -143,7 +143,7 @@ public class Main {
+                 acceptsAll(asList("paper", "paper-settings"), "File for paper settings")
+                         .withRequiredArg()
+                         .ofType(File.class)
+-                        .defaultsTo(new File("paper.yml"))
++                        .defaultsTo(new File("config", "paper.yml")) // AtelierSMP - Relocate files
+                         .describedAs("Yml file");
+ 
+                 acceptsAll(asList("add-plugin", "add-extra-plugin-jar"), "Specify paths to extra plugin jars to be loaded in addition to those in the plugins folder. This argument can be specified multiple times, once for each extra plugin jar path.")
+@@ -157,7 +157,7 @@ public class Main {
+                 acceptsAll(asList("purpur", "purpur-settings"), "File for purpur settings")
+                     .withRequiredArg()
+                     .ofType(File.class)
+-                    .defaultsTo(new File("purpur.yml"))
++                    .defaultsTo(new File("config", "purpur.yml")) // AtelierSMP - Relocate files
+                     .describedAs("Yml file");
+                 // Purpur end
+ 
+@@ -298,6 +298,7 @@ public class Main {
+                 // Paper end
+                 System.setProperty( "library.jansi.version", "Paper" ); // Paper - set meaningless jansi version to prevent git builds from crashing on Windows
+                 System.out.println("Loading libraries, please wait...");
++                java.nio.file.Files.createDirectories(java.nio.file.Paths.get("storage")); // AtelierSMP - Relocate files
+                 net.minecraft.server.Main.main(options);
+             } catch (Throwable t) {
+                 t.printStackTrace();

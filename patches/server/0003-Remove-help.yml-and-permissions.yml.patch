@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+Date: Tue, 1 Mar 2022 20:17:20 +0700
+Subject: [PATCH] Remove help.yml and permissions.yml
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 55477ef18746f11c8f066400b5b2edc88a52d7d8..d3e97e4ef930bf61378287207f8a0fb689f4f618 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -1076,6 +1076,8 @@ public final class CraftServer implements Server {
+ 
+     @SuppressWarnings({ "unchecked", "finally" })
+     private void loadCustomPermissions() {
++        // AtelierSMP start - Remove builtin custom permissions's file
++        /*
+         File file = new File(this.configuration.getString("settings.permissions-file"));
+         FileInputStream stream;
+ 
+@@ -1119,6 +1121,8 @@ public final class CraftServer implements Server {
+                 this.getLogger().log(Level.SEVERE, "Permission in " + file + " was already defined", ex);
+             }
+         }
++        */
++        // AtelierSMP end
+     }
+ 
+     @Override
+diff --git a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+index 74b49f4c1649c161c3c785be7708f5970989f7f3..6abb99dd1fca3506874d0e9068ecc0f1ed85703c 100644
+--- a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
++++ b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+@@ -25,6 +25,8 @@ public class HelpYamlReader {
+     public HelpYamlReader(Server server) {
+         this.server = server;
+ 
++        // AtelierSMP start - Remove help's config file
++        /*
+         File helpYamlFile = new File("help.yml");
+         YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("configurations/help.yml"), Charsets.UTF_8));
+ 
+@@ -44,6 +46,9 @@ public class HelpYamlReader {
+             server.getLogger().severe("Failed to load help.yml. Verify the yaml indentation is correct. Reverting to default help.yml.");
+             this.helpYaml = defaultConfig;
+         }
++        */
++        this.helpYaml = new YamlConfiguration();
++        // AtelierSMP end
+     }
+ 
+     /**
