@@ -5,7 +5,7 @@ Subject: [PATCH] Patina: remove TickTask
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 35e84fa158ef01589e133e54fb6fa2e18d22d3c0..84f136bd0dad568ebc90207b42ccb06fb5b0efdb 100644
+index 04165273a6c6e8dde12b9beb9b98b749e8ec66e2..42602aac898693c7b0f43e28f1c0dbf79f0f61d3 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -186,7 +186,7 @@ import org.bukkit.event.server.ServerLoadEvent;
