@@ -5,7 +5,7 @@ Subject: [PATCH] Relocate server files
 
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-index 17bc75a0f0e665a3b7abaaf2bf197abe3cd2af20..edc1e27764ece52614f092cf3f7c0a602e2f8eaf 100644
+index 56330536c52fa327ef89d7a08e72557c6633c8bb..89e8fe48feb1e2aad375ab6e1ce50d65e806b951 100644
 --- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 +++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 @@ -55,7 +55,7 @@ public class PufferfishConfig {
@@ -18,10 +18,10 @@ index 17bc75a0f0e665a3b7abaaf2bf197abe3cd2af20..edc1e27764ece52614f092cf3f7c0a60
  		if (configFile.exists()) {
  			try {
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index e2c8f716af55ebb7e4233c2a3d6515f8f4a239fa..93f21bc3e5ee515e60faeb9ea8232783a4e1c1fd 100644
+index 1e0d261439255091a6f61485c0747231fbd5b1db..8246fb02f58a4e3e4100f1121351cf67080376ac 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -138,12 +138,12 @@ public class Main {
+@@ -141,12 +141,12 @@ public class Main {
              org.spigotmc.SpigotConfig.disabledAdvancements = spigotConfiguration.getStringList("advancements.disabled"); // Paper - fix SPIGOT-5885, must be set early in init
              // Paper start - fix SPIGOT-5824
              File file;
@@ -37,7 +37,7 @@ index e2c8f716af55ebb7e4233c2a3d6515f8f4a239fa..93f21bc3e5ee515e60faeb9ea8232783
              // Paper end - fix SPIGOT-5824
              YggdrasilAuthenticationService yggdrasilauthenticationservice = new com.destroystokyo.paper.profile.PaperAuthenticationService(Proxy.NO_PROXY); // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index ebddd006afe4960ac90642d4683c5cc8ef0ac33e..20a4925dbee30a4ff2bd9ab78c538cd6bdbdf92b 100644
+index f8976042a6a877fba7fcea8ed1cacf2cd6bda08f..4b2d3f6d577e087d694c9a56d24f69cd5e2a1ac9 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -122,10 +122,12 @@ import org.bukkit.event.player.PlayerRespawnEvent;
@@ -54,11 +54,11 @@ index ebddd006afe4960ac90642d4683c5cc8ef0ac33e..20a4925dbee30a4ff2bd9ab78c538cd6
 +    public static final File OPLIST_FILE = new File("storage", "ops.json");
 +    public static final File WHITELIST_FILE = new File("storage", "whitelist.json");
 +    // AtelierSMP end
-     private static final Logger LOGGER = LogManager.getLogger();
+     private static final Logger LOGGER = LogUtils.getLogger();
      private static final int SEND_PLAYER_INFO_INTERVAL = 600;
      private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 6766e022f94d5604fcaf39a6ff5e70d82d764726..34bd10c2d99f953cb100eea12f0133d93bc7051b 100644
+index 1726788b1364e5a16903c3ce7ad4559b8075495b..0041967b22ebc748fccfb4f6a8d43fdb3fb2c5d2 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -110,7 +110,7 @@ public class Main {

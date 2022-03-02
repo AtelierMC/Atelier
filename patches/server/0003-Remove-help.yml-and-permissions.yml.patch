@@ -5,10 +5,10 @@ Subject: [PATCH] Remove help.yml and permissions.yml
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 55477ef18746f11c8f066400b5b2edc88a52d7d8..d3e97e4ef930bf61378287207f8a0fb689f4f618 100644
+index 14e4ef6210068d5278b313eb5f25ec5a06cda6ad..8be3d970a11d458eaa45e63a1fe9ddc3e537cab8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1076,6 +1076,8 @@ public final class CraftServer implements Server {
+@@ -1073,6 +1073,8 @@ public final class CraftServer implements Server {
  
      @SuppressWarnings({ "unchecked", "finally" })
      private void loadCustomPermissions() {
@@ -17,7 +17,7 @@ index 55477ef18746f11c8f066400b5b2edc88a52d7d8..d3e97e4ef930bf61378287207f8a0fb6
          File file = new File(this.configuration.getString("settings.permissions-file"));
          FileInputStream stream;
  
-@@ -1119,6 +1121,8 @@ public final class CraftServer implements Server {
+@@ -1116,6 +1118,8 @@ public final class CraftServer implements Server {
                  this.getLogger().log(Level.SEVERE, "Permission in " + file + " was already defined", ex);
              }
          }
