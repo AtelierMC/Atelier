@@ -57,11 +57,27 @@ index f8976042a6a877fba7fcea8ed1cacf2cd6bda08f..4b2d3f6d577e087d694c9a56d24f69cd
      private static final Logger LOGGER = LogUtils.getLogger();
      private static final int SEND_PLAYER_INFO_INTERVAL = 600;
      private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 14e4ef6210068d5278b313eb5f25ec5a06cda6ad..184111778be9aa9cb381a14eb1e6bec68b41db86 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -1073,7 +1073,10 @@ public final class CraftServer implements Server {
+ 
+     @SuppressWarnings({ "unchecked", "finally" })
+     private void loadCustomPermissions() {
+-        File file = new File(this.configuration.getString("settings.permissions-file"));
++        // AtelierMC start - Relocate files
++        String path = this.configuration.getString("settings.permissions-file");
++        File file = new File((path != null && path.contains("/")) ? path : "config/" + path);
++        // AtelierMC end
+         FileInputStream stream;
+ 
+         try {
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 1726788b1364e5a16903c3ce7ad4559b8075495b..0041967b22ebc748fccfb4f6a8d43fdb3fb2c5d2 100644
+index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d26b62c3dd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
-@@ -110,7 +110,7 @@ public class Main {
+@@ -110,13 +110,13 @@ public class Main {
                  acceptsAll(Main.asList("b", "bukkit-settings"), "File for bukkit settings")
                          .withRequiredArg()
                          .ofType(File.class)
@@ -70,6 +86,13 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..0041967b22ebc748fccfb4f6a8d43fdb
                          .describedAs("Yml file");
  
                  acceptsAll(Main.asList("C", "commands-settings"), "File for command settings")
+                         .withRequiredArg()
+                         .ofType(File.class)
+-                        .defaultsTo(new File("commands.yml"))
++                        .defaultsTo(new File("config", "commands.yml")) // AtelierSMP - Relocate files
+                         .describedAs("Yml file");
+ 
+                 acceptsAll(Main.asList("forceUpgrade"), "Whether to force a world upgrade");
 @@ -135,7 +135,7 @@ public class Main {
                  acceptsAll(Main.asList("S", "spigot-settings"), "File for spigot settings")
                          .withRequiredArg()
@@ -105,3 +128,16 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..0041967b22ebc748fccfb4f6a8d43fdb
                  net.minecraft.server.Main.main(options);
              } catch (Throwable t) {
                  t.printStackTrace();
+diff --git a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+index 74b49f4c1649c161c3c785be7708f5970989f7f3..8473ed353f243496fbb7de368c23c4bdbd69229d 100644
+--- a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
++++ b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+@@ -25,7 +25,7 @@ public class HelpYamlReader {
+     public HelpYamlReader(Server server) {
+         this.server = server;
+ 
+-        File helpYamlFile = new File("help.yml");
++        File helpYamlFile = new File("config", "help.yml"); // AtelierMC - Relocate files
+         YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("configurations/help.yml"), Charsets.UTF_8));
+ 
+         try {

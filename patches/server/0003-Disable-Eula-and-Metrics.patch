@@ -18,7 +18,7 @@ index 7560d20c4294a40883416f0cc3fcafb96a2bdba0..56807084f7c0bcebd7cceed0b969c7a1
      public static void init(File configFile) {
          CONFIG_FILE = configFile;
 diff --git a/src/main/java/net/minecraft/server/Eula.java b/src/main/java/net/minecraft/server/Eula.java
-index a1d5c0f8fe2adb2ee56f3217e089211ec7c61eb0..07f77a659b3b1d9568a1a4890ffadb60a1fb5755 100644
+index df44790b1c342d0a6ff794bea86319fa7498cbae..312f251e9df36f7537ee37fbac375c975bef4359 100644
 --- a/src/main/java/net/minecraft/server/Eula.java
 +++ b/src/main/java/net/minecraft/server/Eula.java
 @@ -16,7 +16,7 @@ public class Eula {
