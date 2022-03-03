@@ -20,22 +20,21 @@ jobs:
       - name: Build
         run: ./gradlew build -x test createReobfPaperclipJar --stacktrace
       - name: Get Version
-        run: echo "::set-output name=version::$(grep version gradle.properties | cut -d "=" -f2)"
+        run: | 
+          echo "::set-output name=version::$(grep version gradle.properties | cut -d "=" -f2)"
+          echo "::set-output name=mcversion::$(grep mcVersion gradle.properties | cut -d "=" -f2)"
         id: version
-      - name: Get MC Version
-        run: echo "::set-output name=mcversion::$(grep mcVersion gradle.properties | cut -d "=" -f2)"
-        id: mcversion
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%H:%M %m/%d/%Y')"
       - name: Setup release jar
         run: |
           mkdir -p target
-          cp build/libs/ateliersmp-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/ateliersmp-${{ steps.mcversion.outputs.mcversion }}.jar
+          cp build/libs/ateliersmp-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/ateliersmp-${{ steps.version.outputs.mcversion }}.jar
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ steps.mcversion.outputs.mcversion }}"
+          automatic_release_tag: "${{ steps.version.outputs.mcversion }}"
           prerelease: false
-          title: "AtelierMC Release ${{ steps.date.outputs.date }}"
-          files: ./target/ateliersmp-${{ steps.mcversion.outputs.mcversion }}.jar
+          title: "AtelierMC Release ${{ steps.version.outputs.mcversion }} ${{ steps.date.outputs.date }}"
+          files: ./target/ateliersmp-${{ steps.version.outputs.mcversion }}.jar
