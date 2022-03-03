@@ -3,6 +3,7 @@ From: Simon Gardling <titaniumtown@gmail.com>
 Date: Wed, 5 Jan 2022 12:25:37 -0500
 Subject: [PATCH] Jettpack: use XoRoShiRoRandom
 
+This patch was originally created under the GNU Lesser General Public License v3.0 for the "JettPack" project: https://gitlab.com/Titaniumtown/JettPack
 
 diff --git a/src/main/java/com/destroystokyo/paper/loottable/PaperLootableInventoryData.java b/src/main/java/com/destroystokyo/paper/loottable/PaperLootableInventoryData.java
 index 20cfe7b9b7127ddeb97aa91d759fc17b4a548eaf..be669ec0be96816ada803aff28710941325761e5 100644

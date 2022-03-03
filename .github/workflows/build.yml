@@ -21,8 +21,8 @@ jobs:
         run: ./gradlew build -x test createReobfPaperclipJar --stacktrace
       - name: Get Version
         run: | 
-          echo "::set-output name=version::$(grep version gradle.properties | cut -d "=" -f2 | sed 's/ *$//g)"
-          echo "::set-output name=mcversion::$(grep mcVersion gradle.properties | cut -d "=" -f2 | sed 's/ *$//g)"
+          echo "::set-output name=version::$(grep version gradle.properties | cut -d "=" -f2 | sed -e 's/^[[:space:]]*//')"
+          echo "::set-output name=mcversion::$(grep mcVersion gradle.properties | cut -d "=" -f2 | sed -e 's/^[[:space:]]*//')"
         id: version
       - name: Get current date
         id: date

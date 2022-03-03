@@ -3,23 +3,9 @@ From: Simon Gardling <titaniumtown@gmail.com>
 Date: Tue, 9 Nov 2021 16:53:39 -0500
 Subject: [PATCH] Jettpack: reduce allocs
 
+This patch was originally created under the GNU Lesser General Public License v3.0 for the "JettPack" project: https://gitlab.com/Titaniumtown/JettPack
+
 This patch includes code from the lithium project under the GNU Lesser General Public License v3.0: https://github.com/CaffeineMC/lithium-fabric/ but also original code created by your's truly
-
-TitaniumMC
-Copyright (C) 2021  Titaniumtown
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperCommand.java b/src/main/java/com/destroystokyo/paper/PaperCommand.java
 index 76d27205b2bd08ba2b3530b46f0d9b4e2315d82e..d0b6b17b8edf80b1c0ca60b8f9eb4f9fb18ca159 100644
