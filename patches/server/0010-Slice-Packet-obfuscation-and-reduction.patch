@@ -15,10 +15,14 @@ In summary, this patch creates the concept of a "foreignValue" of a packet's dat
 This patch adds the ability to set a "foreignValue" for an entity value so as to obfuscate data received by other players.
 The current packets modified/obfuscated are the following:
 
+# Health - Foreign Players will only receive packets that say the player is "alive or dead (max health or 0 health).
     # This reduces the amount of health packet updates as well which is great for players in combat.
 
+# Air Level - Foreign players will only ever see a player as having full oxygen
     # Air level packets are sent PER-TICK, and as such a player with any change in air level will only spam themselves
     # with packets instead of every single player within tracking distance
+
+# Score - Foreign players will only see a player's score as 0 and will not update due to gathering xp orbs, etc.
 
 diff --git a/src/main/java/net/minecraft/network/protocol/game/ClientboundSetEntityDataPacket.java b/src/main/java/net/minecraft/network/protocol/game/ClientboundSetEntityDataPacket.java
 index 3e17f6131bf590d7c4a16b79c1c145cb4f565bc9..5f4446f04ef777d6a15bc351175cfdeff398b297 100644
@@ -65,7 +69,7 @@ index 1d88edfd09a909044f6e3175af652914b4d06311..ab66e92ffd1546d51f8dceba557ade0a
 +        // JettPack end
  
      }
- 
+
 @@ -200,6 +210,25 @@ public class SynchedEntityData {
          return list;
      }
