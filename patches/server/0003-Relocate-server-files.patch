@@ -37,7 +37,7 @@ index 1e0d261439255091a6f61485c0747231fbd5b1db..8246fb02f58a4e3e4100f1121351cf67
              // Paper end - fix SPIGOT-5824
              YggdrasilAuthenticationService yggdrasilauthenticationservice = new com.destroystokyo.paper.profile.PaperAuthenticationService(Proxy.NO_PROXY); // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index f8976042a6a877fba7fcea8ed1cacf2cd6bda08f..4b2d3f6d577e087d694c9a56d24f69cd5e2a1ac9 100644
+index 111553443a7247db92b15819e9bbd717e4ace61b..e1d403b39b15451ccc73cc5dfefdcf87306aa9ef 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -122,10 +122,12 @@ import org.bukkit.event.player.PlayerRespawnEvent;

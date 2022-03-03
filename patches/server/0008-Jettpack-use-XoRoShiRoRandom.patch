@@ -224,7 +224,7 @@ index 0000000000000000000000000000000000000000..ee637622cc2ce1303f4a8254ee8e559b
 +}
 \ No newline at end of file
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 35e84fa158ef01589e133e54fb6fa2e18d22d3c0..04165273a6c6e8dde12b9beb9b98b749e8ec66e2 100644
+index 1d618a5b738f5a59f80575c52d5dc74e00f9683e..a301f079fc899cb3cb7a34d262a744336e154dc2 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -348,7 +348,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -457,7 +457,7 @@ index d33af84300db18ea2b71dba2c9ed43390a293500..f80d375eec908713622d3e3b447ca906
  
                      MinecraftServer minecraftServer = this.level.getServer();
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index a3ddeb9862bc87294c215dc906cd8cca8f699b62..5734583ed14192128a464750d8cf80e24aadf401 100644
+index b2c5fbfcb64f3056d7975db43b2db45bfd5e9890..aec97a921b59db97fea59d53afb255acb72e355c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -239,7 +239,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
