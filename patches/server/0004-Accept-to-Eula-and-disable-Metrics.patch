@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
 Date: Tue, 1 Mar 2022 20:18:16 +0700
-Subject: [PATCH] Disable Eula and Metrics
+Subject: [PATCH] Accept to Eula and disable Metrics
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
