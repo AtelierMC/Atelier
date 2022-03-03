@@ -231,7 +231,7 @@ index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7
          OptionSpec<Integer> optionspec11 = optionparser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
          OptionSpec<String> optionspec12 = optionparser.accepts("serverId").withRequiredArg();
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index d3fac7c116b396bd5c027dfddc20359f5cafc252..35e84fa158ef01589e133e54fb6fa2e18d22d3c0 100644
+index eca5f923253a5ae143793894eef3e3e3602e98fe..1d618a5b738f5a59f80575c52d5dc74e00f9683e 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1428,8 +1428,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -259,7 +259,7 @@ index 65f1f919a689f6f7960d731b250582bd521c4eea..c35ad916e1af768347bce23f0b0ea6df
  
              for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 0b3ac3ff615feb709f0e604d2caed7e3c8078e01..b53f36c9e8b6e712b28d3066a751dc1b2e8bb53e 100644
+index e149cca91f87645d1479156d0ff40b8b6527fefc..7541746cd2cd213897bd73970f2f757a261b5f71 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -898,7 +898,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -341,7 +341,7 @@ index 40231e5a600f9a57bf079c7976143b724da582cf..9328309feee788797aeecaf9928dcbb8
  
          final String s;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 4b2d3f6d577e087d694c9a56d24f69cd5e2a1ac9..4ff1749114547c184be810545ddbf2b4756c27ae 100644
+index e1d403b39b15451ccc73cc5dfefdcf87306aa9ef..85272d696e5b1355bc38362e538c7dd2a2f9149d 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -318,7 +318,7 @@ public abstract class PlayerList {
@@ -353,7 +353,7 @@ index 4b2d3f6d577e087d694c9a56d24f69cd5e2a1ac9..4ff1749114547c184be810545ddbf2b4
          entityplayer.networkManager.send(new ClientboundDisconnectPacket(msg), (future) -> {
              entityplayer.networkManager.disconnect(msg);
              entityplayer.networkManager = null;
-@@ -729,7 +729,7 @@ public abstract class PlayerList {
+@@ -736,7 +736,7 @@ public abstract class PlayerList {
          while (iterator.hasNext()) {
              entityplayer = (ServerPlayer) iterator.next();
              this.save(entityplayer); // CraftBukkit - Force the player's inventory to be saved

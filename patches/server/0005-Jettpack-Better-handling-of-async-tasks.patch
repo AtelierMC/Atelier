@@ -76,7 +76,7 @@ index d6a57cdad2c92521a800cb18d060d9d6d627a8c0..aa7d17ad202e51fd3f43aac2ff7d8d7f
      public static Runnable once(Runnable run) {
          AtomicBoolean ran = new AtomicBoolean(false);
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 25ad2d70a91ce127fbd96ff649939f9acfdb923e..d3fac7c116b396bd5c027dfddc20359f5cafc252 100644
+index 78ce57204548210da643075d908cd7fb95d1c689..eca5f923253a5ae143793894eef3e3e3602e98fe 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1065,6 +1065,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -95,7 +95,7 @@ index 25ad2d70a91ce127fbd96ff649939f9acfdb923e..d3fac7c116b396bd5c027dfddc20359f
              this.runAllTasks();
          }
          // Paper end
-@@ -2757,6 +2759,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2762,6 +2764,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              return;
          }
  

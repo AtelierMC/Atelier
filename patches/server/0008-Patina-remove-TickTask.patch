@@ -1,11 +1,11 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+From: foss-mc <69294560+foss-mc@users.noreply.github.com>
 Date: Wed, 2 Mar 2022 09:26:37 +0700
 Subject: [PATCH] Patina: remove TickTask
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 04165273a6c6e8dde12b9beb9b98b749e8ec66e2..42602aac898693c7b0f43e28f1c0dbf79f0f61d3 100644
+index a301f079fc899cb3cb7a34d262a744336e154dc2..198cb50e3245e4d60fec1fac5a661a8dab1765d9 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -186,7 +186,7 @@ import org.bukkit.event.server.ServerLoadEvent;
