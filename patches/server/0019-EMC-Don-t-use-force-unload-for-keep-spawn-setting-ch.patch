@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Aikar <aikar@aikar.co>
+Date: Thu, 3 Mar 2022 14:24:13 +0700
+Subject: [PATCH] EMC: Don't use force unload for keep spawn setting change
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
+index aec97a921b59db97fea59d53afb255acb72e355c..979472e6903958a08ac2891c928ad51bb5a88172 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
+@@ -407,7 +407,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
+ 
+     @Override
+     public boolean unloadChunk(int x, int z) {
+-        return this.unloadChunk(x, z, true);
++        return this.unloadChunkRequest(x, z); // EMC
+     }
+ 
+     @Override
