@@ -1,5 +1,5 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+From: Aikar <aikar@aikar.co>
 Date: Thu, 3 Mar 2022 14:49:54 +0700
 Subject: [PATCH] EMC: Improve Hopper Performance
 
@@ -52,6 +52,31 @@ index 1c5aa4e7b06c2b2ce32ea63140154db3c5c58231..9a8b9108ca36df0e420c20a788aa6dec
      }
      // Spigot end
  
+diff --git a/src/main/java/net/minecraft/world/entity/vehicle/MinecartHopper.java b/src/main/java/net/minecraft/world/entity/vehicle/MinecartHopper.java
+index 617ca271b04bbd4cceecedbac5c465e89fbef60b..b7ccd66df565908d95ccc62c8c6f96ccd109f55b 100644
+--- a/src/main/java/net/minecraft/world/entity/vehicle/MinecartHopper.java
++++ b/src/main/java/net/minecraft/world/entity/vehicle/MinecartHopper.java
+@@ -22,6 +22,7 @@ public class MinecartHopper extends AbstractMinecartContainer implements Hopper
+     private boolean enabled = true;
+     private int cooldownTime = -1;
+     private final BlockPos lastPosition = BlockPos.ZERO;
++    public int pickupImmunity = 0; // EMC
+ 
+     public MinecartHopper(EntityType<? extends MinecartHopper> type, Level world) {
+         super(type, world);
+@@ -153,4 +154,12 @@ public class MinecartHopper extends AbstractMinecartContainer implements Hopper
+     public AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+         return new HopperMenu(syncId, playerInventory, this);
+     }
++
++    // EMC start
++    private long tickAttempts = 0;
++    @Override
++    public long getAndIncrementAttemptCounter() {
++        return tickAttempts++;
++    }
++    // EMC stop
+ }
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/Hopper.java b/src/main/java/net/minecraft/world/level/block/entity/Hopper.java
 index 6a1405a8630e90db3b5a3c9152259ba6f5f0c784..4f01c72ee3c2191ec76d975eb936cb670cd9e058 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/Hopper.java
