@@ -1,4 +1,4 @@
-## JettPack
+## AtelierSMP
 
 AtelierSMP is a fork of [Purpur](https://github.com/PurpurMC/Purpur) with some performance patches from many sources.
 
