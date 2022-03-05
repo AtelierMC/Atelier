@@ -217,10 +217,10 @@ index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7
          OptionSpec<Integer> optionspec11 = optionparser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
          OptionSpec<String> optionspec12 = optionparser.accepts("serverId").withRequiredArg();
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index eca5f923253a5ae143793894eef3e3e3602e98fe..1d618a5b738f5a59f80575c52d5dc74e00f9683e 100644
+index 5db90e7c5a546c0e867d5e84f80bbe3f444e2114..05071fea152a66adc8267293b583620851f6498b 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1428,8 +1428,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1426,8 +1426,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              try {
                  BufferedImage bufferedimage = ImageIO.read(file);
  
@@ -245,7 +245,7 @@ index 65f1f919a689f6f7960d731b250582bd521c4eea..c35ad916e1af768347bce23f0b0ea6df
  
              for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index e149cca91f87645d1479156d0ff40b8b6527fefc..7541746cd2cd213897bd73970f2f757a261b5f71 100644
+index bba611ee7c967bf918cdc4053e32b28a3f25b047..f10087301194df1858d5d0ca5b9ecc61d42324a5 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -898,7 +898,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -507,7 +507,7 @@ index 2f9f15d99f8b31e9f13f7f32378b2a9e09bcb5e5..aa565ab33700c92ca607463bdc0dcaef
  
      @Override
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index bdd9282783382a2e6ad525ca27f1be88be4ca3c1..94f908bfb73b2ff9bb97e5bc93685a83051d9676 100644
+index c29fdc40b72da7ca18a1c0bbcf02162799458063..e5b2c0c0fb6e14f57fe84fa1b7db6b92d07aa983 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -1613,7 +1613,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

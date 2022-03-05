@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+# file utilized in github actions to automatically update upstream
+
 (
 set -e
 PS1="$"

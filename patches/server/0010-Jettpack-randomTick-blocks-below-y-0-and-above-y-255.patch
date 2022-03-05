@@ -19,7 +19,7 @@ index afd194c5e63f4f8e2220c5b382138e96ecb14c1b..7472b9f4e0bd855f169680db8c90f738
  
      public static BlockState getBlockDataFromRaw(final long raw) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 7541746cd2cd213897bd73970f2f757a261b5f71..f3ceba34480a1530886a813d004b454769919604 100644
+index f10087301194df1858d5d0ca5b9ecc61d42324a5..c813437c13fdc6d384c2c3983ec919aa12069962 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -881,7 +881,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -41,10 +41,10 @@ index 7541746cd2cd213897bd73970f2f757a261b5f71..f3ceba34480a1530886a813d004b4547
  
                      BlockPos blockposition2 = blockposition.set(j + randomX, randomY, k + randomZ);
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunkSection.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunkSection.java
-index a32a90056acf37150b90f2941ce5b87b6ca8d162..84c093aa71c66d9438fef2428027d0455ac8ebd9 100644
+index d69fe40d3af983144999963ec25b32500237e515..d25784481496ab7f6f6d745f140a6de673b5e7eb 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunkSection.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunkSection.java
-@@ -192,7 +192,7 @@ public class LevelChunkSection {
+@@ -190,7 +190,7 @@ public class LevelChunkSection {
              if (iblockdata1.isRandomlyTicking()) {
                  --this.tickingBlockCount;
                  // Paper start
@@ -53,7 +53,7 @@ index a32a90056acf37150b90f2941ce5b87b6ca8d162..84c093aa71c66d9438fef2428027d045
                  // Paper end
              }
          }
-@@ -207,7 +207,7 @@ public class LevelChunkSection {
+@@ -205,7 +205,7 @@ public class LevelChunkSection {
              if (state.isRandomlyTicking()) {
                  ++this.tickingBlockCount;
                  // Paper start
