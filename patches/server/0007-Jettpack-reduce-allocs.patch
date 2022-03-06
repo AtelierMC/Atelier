@@ -217,10 +217,10 @@ index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7
          OptionSpec<Integer> optionspec11 = optionparser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
          OptionSpec<String> optionspec12 = optionparser.accepts("serverId").withRequiredArg();
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 5db90e7c5a546c0e867d5e84f80bbe3f444e2114..05071fea152a66adc8267293b583620851f6498b 100644
+index ac7ea8ae99c11da50deb188a858710a33719ce4f..949b036fe276e9fcc78d9122da6f994a9d4ef104 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1426,8 +1426,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1440,8 +1440,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              try {
                  BufferedImage bufferedimage = ImageIO.read(file);
  
@@ -245,7 +245,7 @@ index 65f1f919a689f6f7960d731b250582bd521c4eea..c35ad916e1af768347bce23f0b0ea6df
  
              for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index bba611ee7c967bf918cdc4053e32b28a3f25b047..f10087301194df1858d5d0ca5b9ecc61d42324a5 100644
+index 4f584e1b6235f535a6023f97ae24785f0b271bcb..d5dadc731e0fa9079feae60badc0ff6e409ba13c 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -898,7 +898,7 @@ public class ServerLevel extends Level implements WorldGenLevel {

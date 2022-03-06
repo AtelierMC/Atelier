@@ -16,7 +16,7 @@ if [ "$current" != "$upstream" ]; then
     } || exit
 
     git add .
-    ./scripts/upstreamCommit.sh "$current"
+    ./scripts/upstreamCommit.sh "$current" "$upstream"
 fi
 
 ) || exit 1
