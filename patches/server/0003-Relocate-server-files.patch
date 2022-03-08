@@ -5,18 +5,20 @@ Subject: [PATCH] Relocate server files
 
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-index cd03fed32807fd943fdeee8571c1648b8bd567d0..03326e3aed3973ef359d559a438418dcddb9ad37 100644
+index 56330536c52fa327ef89d7a08e72557c6633c8bb..00cbecb1a4309661d40e5de069f53580c982e2f4 100644
 --- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 +++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-@@ -55,7 +55,7 @@ public class PufferfishConfig {
+@@ -55,8 +55,8 @@ public class PufferfishConfig {
  	}
- 
+ 	
  	public static void load() throws IOException {
 -		File configFile = new File("pufferfish.yml");
+-		
 +		File configFile = new File("config", "pufferfish.yml"); // AtelierSMP - Relocate files
- 
++
  		if (configFile.exists()) {
  			try {
+ 				config.load(configFile);
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
 index 1e0d261439255091a6f61485c0747231fbd5b1db..8246fb02f58a4e3e4100f1121351cf67080376ac 100644
 --- a/src/main/java/net/minecraft/server/Main.java
@@ -58,7 +60,7 @@ index 111553443a7247db92b15819e9bbd717e4ace61b..e1d403b39b15451ccc73cc5dfefdcf87
      private static final int SEND_PLAYER_INFO_INTERVAL = 600;
      private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 782adba2a14d5b1a2e43c61909e776f208becf38..25a50d06143c2b9189af56740d6adbdec9bf62e8 100644
+index 2222c34754cc9ec878034a1c944683944facbed5..a7ac2143ce148b0b7afc192ff7b37d530b1437ca 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1073,7 +1073,10 @@ public final class CraftServer implements Server {
