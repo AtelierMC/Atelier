@@ -5,7 +5,7 @@ Subject: [PATCH] EMC: dont load chunks for physics
 
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 436e5716b4af1468de08fe15a0249b1328714dab..82d77806912ff0037d825c09c49e5e9c8bb60b1a 100644
+index e5b2c0c0fb6e14f57fe84fa1b7db6b92d07aa983..2407baa12fb89611094c45ac6cf1f31c87f4739f 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -901,7 +901,10 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

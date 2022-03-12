@@ -1994,7 +1994,7 @@ index 0000000000000000000000000000000000000000..6d6c1b81b696187add53e744aaffa54d
 +	}
 +}
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index d7dcf36c8c972e30320c56e447822cf26f6d5fb3..14c21ab46cb5e1260015f4fda52d0cb566d2cee8 100644
+index ad3f0ff353a0448babde334641d1b1ac94779b07..15be778f249a959c327d84f43013dc476813c096 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 @@ -77,13 +77,37 @@ public class PaperWorldConfig {
@@ -2043,7 +2043,7 @@ index d7dcf36c8c972e30320c56e447822cf26f6d5fb3..14c21ab46cb5e1260015f4fda52d0cb5
      }
  
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index f3ceba34480a1530886a813d004b454769919604..287f5ea58bf1e35abb724641f9b5b21f012d80d5 100644
+index 9120edc92c30233bc078501225b4f9ad95a3d020..70c7f479bf8e53f217268c5c6e7f222aff13db34 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -162,9 +162,14 @@ import org.bukkit.event.weather.LightningStrikeEvent;
