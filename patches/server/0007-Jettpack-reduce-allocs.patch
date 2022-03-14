@@ -217,10 +217,10 @@ index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7
          OptionSpec<Integer> optionspec11 = optionparser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
          OptionSpec<String> optionspec12 = optionparser.accepts("serverId").withRequiredArg();
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index ac7ea8ae99c11da50deb188a858710a33719ce4f..949b036fe276e9fcc78d9122da6f994a9d4ef104 100644
+index 30f7c8528f5432a4c3fd1d01310760a0648a82e5..8f6b50d85416333a3a5cd40cdfe4cb359c0a10c8 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1440,8 +1440,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1438,8 +1438,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              try {
                  BufferedImage bufferedimage = ImageIO.read(file);
  
@@ -245,7 +245,7 @@ index 65f1f919a689f6f7960d731b250582bd521c4eea..c35ad916e1af768347bce23f0b0ea6df
  
              for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 4f584e1b6235f535a6023f97ae24785f0b271bcb..d5dadc731e0fa9079feae60badc0ff6e409ba13c 100644
+index 07031278c70f1c739d9a24d60ab6c16b2cb0a061..8372c52a1f20dcaece7be6cf513b11e104584cbd 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -898,7 +898,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -401,7 +401,7 @@ index 92154459fd46db7e9182952cc1f844298c2dcb3c..652a2fd65b768a7477bfa64eed1f7744
  
          for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/world/entity/Mob.java b/src/main/java/net/minecraft/world/entity/Mob.java
-index e8c3ff0319ef475bddd110346261ef91a0caabba..7787700f6d17b1cdd744b4616f56ae7fb85b1ffd 100644
+index 3b75ea276347b6efcc6e2aca6dc888f5d9a8493e..5cee9023de3e71ca4c5e7087f747a665455e6061 100644
 --- a/src/main/java/net/minecraft/world/entity/Mob.java
 +++ b/src/main/java/net/minecraft/world/entity/Mob.java
 @@ -1040,7 +1040,7 @@ public abstract class Mob extends LivingEntity {
