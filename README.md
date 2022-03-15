@@ -56,7 +56,7 @@ To create one, just add a commit to either repo and run `./gradlew rebuildPatche
 patch will be placed in the patches folder. Modifying commits will also modify its 
 corresponding patch file.
 
-We followed PaperMC/Paper contribution guides, please see [PaperMC/Paper CONTRIBUTING.md](CONTRIBUTING.md) for more detailed information.
+We followed PaperMC/Paper contribution guides, please see [PaperMC/Paper CONTRIBUTING.md](https://github.com/PaperMC/Paper/blob/master/CONTRIBUTING.md) for more detailed information.
 
 
 #### Compiling
