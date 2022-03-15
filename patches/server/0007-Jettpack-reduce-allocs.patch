@@ -267,7 +267,7 @@ index 07031278c70f1c739d9a24d60ab6c16b2cb0a061..8372c52a1f20dcaece7be6cf513b11e1
          return ret;
      }
 diff --git a/src/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/src/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index 0575f1bb9377ed8d58742db79efa13b639bab229..d2edd08ae88a1854ecc106062fbf349b10165992 100644
+index bf635517f03d16003f951e80f19253ce99d4097d..f97e544e80daa2669c13a3573b819c20a15842b3 100644
 --- a/src/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/src/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 @@ -389,7 +389,7 @@ public class ServerGamePacketListenerImpl implements ServerPlayerConnection, Ser
@@ -279,7 +279,7 @@ index 0575f1bb9377ed8d58742db79efa13b639bab229..d2edd08ae88a1854ecc106062fbf349b
              }
          } else {
              if (elapsedTime >= 15000L) { // 15 seconds
-@@ -828,13 +828,13 @@ public class ServerGamePacketListenerImpl implements ServerPlayerConnection, Ser
+@@ -837,13 +837,13 @@ public class ServerGamePacketListenerImpl implements ServerPlayerConnection, Ser
          // PlayerConnectionUtils.ensureMainThread(packetplayintabcomplete, this, this.player.getWorldServer()); // Paper - run this async
          // CraftBukkit start
          if (this.chatSpamTickCount.addAndGet(com.destroystokyo.paper.PaperConfig.tabSpamIncrement) > com.destroystokyo.paper.PaperConfig.tabSpamLimit && !this.server.getPlayerList().isOp(this.player.getGameProfile())) { // Paper start - split and make configurable
@@ -295,7 +295,7 @@ index 0575f1bb9377ed8d58742db79efa13b639bab229..d2edd08ae88a1854ecc106062fbf349b
              return;
          }
          // Paper end
-@@ -3027,7 +3027,7 @@ public class ServerGamePacketListenerImpl implements ServerPlayerConnection, Ser
+@@ -3036,7 +3036,7 @@ public class ServerGamePacketListenerImpl implements ServerPlayerConnection, Ser
          // Paper start
          if (!org.bukkit.Bukkit.isPrimaryThread()) {
              if (recipeSpamPackets.addAndGet(com.destroystokyo.paper.PaperConfig.autoRecipeIncrement) > com.destroystokyo.paper.PaperConfig.autoRecipeLimit) {
