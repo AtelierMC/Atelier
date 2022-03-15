@@ -5,7 +5,7 @@ Subject: [PATCH] Rebranding
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index bd5d784ad6fb9786e03bd614baa40954b9fe6090..09407fad6276464dea14580004506f6caa93fbfe 100644
+index e8bbf2519a75a94002b20c31a709a41eec4716aa..308e9de75e3fba32c10baf8219faa1e6d3f1d900 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -18,7 +18,7 @@ repositories {
@@ -13,7 +13,7 @@ index bd5d784ad6fb9786e03bd614baa40954b9fe6090..09407fad6276464dea14580004506f6c
  
  dependencies {
 -    implementation(project(":purpur-api")) // Pufferfish // Paper // Purpur
-+    implementation(project(":ateliersmp-api")) // Pufferfish // Paper // Purpur // AtelierSMP
++    implementation(project(":atelier-api")) // Pufferfish // Paper // Purpur // Atelier
      // Pufferfish start
      implementation("io.papermc.paper:paper-mojangapi:1.18.2-R0.1-SNAPSHOT") {
          exclude("io.papermc.paper", "paper-api")
@@ -22,12 +22,12 @@ index bd5d784ad6fb9786e03bd614baa40954b9fe6090..09407fad6276464dea14580004506f6c
              "Main-Class" to "org.bukkit.craftbukkit.Main",
              "Implementation-Title" to "CraftBukkit",
 -            "Implementation-Version" to "git-Purpur-$implementationVersion", // Pufferfish // Purpur
-+            "Implementation-Version" to "git-AtelierSMP-$implementationVersion", // Pufferfish // Purpur // AtelierSMP
++            "Implementation-Version" to "git-Atelier-$implementationVersion", // Pufferfish // Purpur // Atelier
              "Implementation-Vendor" to date, // Paper
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
 diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-index fba5dbdb7bcbb55400ef18342c9b54612972a718..59159f4d85d0fbbf2b90f0add8069bdc8cb6065d 100644
+index fba5dbdb7bcbb55400ef18342c9b54612972a718..ed720fcfff19c54a1f5eb1856b3a79bd37162188 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 @@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
@@ -35,7 +35,7 @@ index fba5dbdb7bcbb55400ef18342c9b54612972a718..59159f4d85d0fbbf2b90f0add8069bdc
      private static final java.util.regex.Pattern VER_PATTERN = java.util.regex.Pattern.compile("^([0-9\\.]*)\\-.*R"); // R is an anchor, will always give '-R' at end
      // Purpur start
 -    private static final String DOWNLOAD_PAGE = "https://purpurmc.org/downloads";
-+    private static final String DOWNLOAD_PAGE = "https://github.com/AtelierMC/AtelierSMP/releases"; // AtelierSMP
++    private static final String DOWNLOAD_PAGE = "https://github.com/AtelierMC/Atelier/releases"; // Atelier
      private static int distance = -2; public int distance() { return distance; }
      // Purpur end
      private static @Nullable String mcVer;
@@ -45,8 +45,8 @@ index fba5dbdb7bcbb55400ef18342c9b54612972a718..59159f4d85d0fbbf2b90f0add8069bdc
      public Component getVersionMessage(@Nonnull String serverVersion) {
 -        String[] parts = serverVersion.substring("git-Purpur-".length()).split("[-\\s]"); // Purpur
 -        final Component updateMessage = getUpdateStatusMessage("PurpurMC/Purpur", "ver/" + getMinecraftVersion(), parts[0]); // Purpur
-+        String[] parts = serverVersion.substring("git-AtelierSMP-".length()).split("[-\\s]"); // Purpur // AtelierSMP
-+        final Component updateMessage = getUpdateStatusMessage("AtelierMC/AtelierSMP", "ver/" + getMinecraftVersion(), parts[0]); // Purpur // AtelierSMP
++        String[] parts = serverVersion.substring("git-Atelier-".length()).split("[-\\s]"); // Purpur // Atelier
++        final Component updateMessage = getUpdateStatusMessage("AtelierMC/Atelier", "ver/" + getMinecraftVersion(), parts[0]); // Purpur // Atelier
          final Component history = getHistory();
  
          return history != null ? Component.join(net.kyori.adventure.text.JoinConfiguration.separator(Component.newline()), history, updateMessage) : updateMessage; // Purpur
@@ -55,7 +55,7 @@ index fba5dbdb7bcbb55400ef18342c9b54612972a718..59159f4d85d0fbbf2b90f0add8069bdc
                  mcVer = result.substring(0, result.length() - 2); // strip 'R' anchor and trailing '-'
              } else {
 -                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to Purpur!"); // Purpur
-+                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to AtelierMC!"); // Purpur // AtelierSMP
++                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to AtelierMC!"); // Purpur // Atelier
                  org.bukkit.Bukkit.getLogger().warning("Pattern: " + VER_PATTERN.toString());
                  org.bukkit.Bukkit.getLogger().warning("Version: " + org.bukkit.Bukkit.getBukkitVersion());
              }
@@ -70,15 +70,15 @@ index fba5dbdb7bcbb55400ef18342c9b54612972a718..59159f4d85d0fbbf2b90f0add8069bdc
 -            versionInfo = versionInfo.replace("\"", "");
 -            distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
 -        }
-+        // AtelierSMP start - Only fetch from Github
++        // Atelier start - Only fetch from Github
 +        versionInfo = versionInfo.replace("\"", "");
 +        distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
-+        // AtelierSMP end
++        // Atelier end
  
          switch (distance) {
              case -1:
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index a3e01874786613874708f1cbe95893fc7834ab45..2222c34754cc9ec878034a1c944683944facbed5 100644
+index a3e01874786613874708f1cbe95893fc7834ab45..23e2ad3be1786cfd3bf614d5fa464a70b0a73360 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -248,7 +248,7 @@ import javax.annotation.Nullable; // Paper
@@ -86,12 +86,12 @@ index a3e01874786613874708f1cbe95893fc7834ab45..2222c34754cc9ec878034a1c94468394
  
  public final class CraftServer implements Server {
 -    private final String serverName = "Purpur"; // Paper // Pufferfish // Purpur
-+    private final String serverName = "AtelierSMP"; // Paper // Pufferfish // Purpur // AtelierSMP
++    private final String serverName = "Atelier"; // Paper // Pufferfish // Purpur // Atelier
      private final String serverVersion;
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
-index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..8b5f91dc5d1c1c1de696fca8fdf53fe87f9aa81e 100644
+index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..028ead34838b94d2682293be622c1649de6c11e7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 @@ -11,7 +11,7 @@ public final class Versioning {
@@ -99,12 +99,12 @@ index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..8b5f91dc5d1c1c1de696fca8fdf53fe8
          String result = "Unknown-Version";
  
 -        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/org.purpurmc.purpur/purpur-api/pom.properties"); // Pufferfish // Purpur
-+        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/tech.ateliermc.ateliersmp/ateliersmp-api/pom.properties"); // Pufferfish // Purpur // AtelierSMP
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/tech.ateliermc.atelier/atelier-api/pom.properties"); // Pufferfish // Purpur // Atelier
          Properties properties = new Properties();
  
          if (stream != null) {
 diff --git a/src/main/java/org/purpurmc/purpur/PurpurConfig.java b/src/main/java/org/purpurmc/purpur/PurpurConfig.java
-index 659e93fb24124318367e5b4d0b144ca1443950e9..cc42d29fa8bd127fd8055e28c06550ad466fe290 100644
+index 659e93fb24124318367e5b4d0b144ca1443950e9..a5e2640b7a0c05f4109e8eb1f8200b8044c3bb96 100644
 --- a/src/main/java/org/purpurmc/purpur/PurpurConfig.java
 +++ b/src/main/java/org/purpurmc/purpur/PurpurConfig.java
 @@ -235,7 +235,7 @@ public class PurpurConfig {
@@ -112,7 +112,7 @@ index 659e93fb24124318367e5b4d0b144ca1443950e9..cc42d29fa8bd127fd8055e28c06550ad
      }
  
 -    public static String serverModName = "Purpur";
-+    public static String serverModName = "AtelierSMP"; // AtelierSMP - Set default branding name
++    public static String serverModName = "Atelier"; // Atelier - Set default branding name
      private static void serverModName() {
          serverModName = getString("settings.server-mod-name", serverModName);
      }

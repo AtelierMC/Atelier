@@ -61,7 +61,7 @@ subprojects {
 }
 
 paperweight {
-    serverProject.set(project(":ateliersmp-server"))
+    serverProject.set(project(":atelier-server"))
 
     remapRepo.set("https://maven.fabricmc.net/")
     decompileRepo.set("https://files.minecraftforge.net/maven/")
@@ -74,10 +74,10 @@ paperweight {
             baseName("Purpur")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
-            apiOutputDir.set(layout.projectDirectory.dir("AtelierSMP-API"))
+            apiOutputDir.set(layout.projectDirectory.dir("Atelier-API"))
 
             serverPatchDir.set(layout.projectDirectory.dir("patches/server"))
-            serverOutputDir.set(layout.projectDirectory.dir("AtelierSMP-Server"))
+            serverOutputDir.set(layout.projectDirectory.dir("Atelier-Server"))
         }
     }
 }

@@ -5,14 +5,14 @@ Subject: [PATCH] Remove useless warning
 
 
 diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-index 119989e11c2e11aceaddec507f15d0260fba648a..3661f5175e53d135cf6b18d215d176940b68ac85 100644
+index 119989e11c2e11aceaddec507f15d0260fba648a..2f20e0089c94f63792adc8dae9aee4f6a4b3791c 100644
 --- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 @@ -326,6 +326,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
  
          if (!this.usesAuthentication()) {
              DedicatedServer.LOGGER.warn("**** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");
-+            // AtelierSMP start - Remove useless warning
++            // Atelier start - Remove useless warning
 +            /*
              DedicatedServer.LOGGER.warn("The server will make no attempt to authenticate usernames. Beware.");
              // Spigot start
@@ -22,12 +22,12 @@ index 119989e11c2e11aceaddec507f15d0260fba648a..3661f5175e53d135cf6b18d215d17694
              // Spigot end
              DedicatedServer.LOGGER.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
 +            */
-+            // AtelierSMP
++            // Atelier
          }
  
  
 diff --git a/src/main/java/net/minecraft/stats/ServerStatsCounter.java b/src/main/java/net/minecraft/stats/ServerStatsCounter.java
-index c59f98ca3adfdd90cdc5999aeadbb0834efedc0f..baee660ed8bce8ae804f90797e790c7bc2d6c43e 100644
+index c59f98ca3adfdd90cdc5999aeadbb0834efedc0f..889fcdd41c0b49f2d53245e92736ba0a619548a6 100644
 --- a/src/main/java/net/minecraft/stats/ServerStatsCounter.java
 +++ b/src/main/java/net/minecraft/stats/ServerStatsCounter.java
 @@ -134,15 +134,15 @@ public class ServerStatsCounter extends StatsCounter {
@@ -35,17 +35,17 @@ index c59f98ca3adfdd90cdc5999aeadbb0834efedc0f..baee660ed8bce8ae804f90797e790c7b
                                                  this.stats.put(statistic, nbttagcompound2.getInt(s2));
                                              }, () -> {
 -                                                ServerStatsCounter.LOGGER.warn("Invalid statistic in {}: Don't know what {} is", this.file, s2);
-+                                                // ServerStatsCounter.LOGGER.warn("Invalid statistic in {}: Don't know what {} is", this.file, s2); // AtelierSMP
++                                                // ServerStatsCounter.LOGGER.warn("Invalid statistic in {}: Don't know what {} is", this.file, s2); // Atelier
                                              });
                                          } else {
 -                                            ServerStatsCounter.LOGGER.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.file, nbttagcompound2.get(s2), s2});
-+                                            // ServerStatsCounter.LOGGER.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.file, nbttagcompound2.get(s2), s2}); // AtelierSMP
++                                            // ServerStatsCounter.LOGGER.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.file, nbttagcompound2.get(s2), s2}); // Atelier
                                          }
                                      }
  
                                  }, () -> {
 -                                    ServerStatsCounter.LOGGER.warn("Invalid statistic type in {}: Don't know what {} is", this.file, s1);
-+                                    // ServerStatsCounter.LOGGER.warn("Invalid statistic type in {}: Don't know what {} is", this.file, s1); // AtelierSMP
++                                    // ServerStatsCounter.LOGGER.warn("Invalid statistic type in {}: Don't know what {} is", this.file, s1); // Atelier
                                  });
                              }
                          }

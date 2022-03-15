@@ -18,7 +18,7 @@ jobs:
       - name: Apply patches
         run: ./gradlew applyPatches --stacktrace
       - name: Build
-        run: ./gradlew build -x test createReobfPaperclipJar --stacktrace
+        run: ./gradlew createReobfPaperclipJar --stacktrace
       - name: Get Version
         run: | 
           echo "::set-output name=version::$(grep version gradle.properties | cut -d "=" -f2 | sed -e 's/^[[:space:]]*//')"
@@ -27,7 +27,7 @@ jobs:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%H:%M %m/%d/%Y')"
-      - name: Setup release jar
+      - name: Release jar
         run: |
           mkdir -p target
           cp build/libs/ateliersmp-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/ateliersmp-${{ steps.version.outputs.mcversion }}.jar
@@ -36,5 +36,5 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ steps.version.outputs.mcversion }}"
           prerelease: false
-          title: "AtelierMC Release ${{ steps.version.outputs.mcversion }} ${{ steps.date.outputs.date }}"
-          files: ./target/ateliersmp-${{ steps.version.outputs.mcversion }}.jar
+          title: "Atelier ${{ steps.version.outputs.mcversion }} Release ${{ steps.date.outputs.date }}"
+          files: ./target/atelier-${{ steps.version.outputs.mcversion }}.jar

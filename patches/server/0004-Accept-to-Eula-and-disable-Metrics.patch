@@ -5,7 +5,7 @@ Subject: [PATCH] Accept to Eula and disable Metrics
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-index 7560d20c4294a40883416f0cc3fcafb96a2bdba0..56807084f7c0bcebd7cceed0b969c7a19096c6a9 100644
+index 9e8f87127e04be3174e2f5dae1b8a50c2b6468b5..19229c46a2c273cf6691b62258cc5e30610de237 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperConfig.java
 @@ -51,7 +51,7 @@ public class PaperConfig {
@@ -13,12 +13,12 @@ index 7560d20c4294a40883416f0cc3fcafb96a2bdba0..56807084f7c0bcebd7cceed0b969c7a1
      private static boolean fatalError;
      /*========================================================================*/
 -    private static boolean metricsStarted;
-+    private static boolean metricsStarted = true; // AtelierSMP - Disable Metrics
++    private static boolean metricsStarted = true; // Atelier - Disable Metrics
  
      public static void init(File configFile) {
          CONFIG_FILE = configFile;
 diff --git a/src/main/java/net/minecraft/server/Eula.java b/src/main/java/net/minecraft/server/Eula.java
-index df44790b1c342d0a6ff794bea86319fa7498cbae..312f251e9df36f7537ee37fbac375c975bef4359 100644
+index df44790b1c342d0a6ff794bea86319fa7498cbae..71ac2d4c87f283c9b85ae513fa04707a3d3311a2 100644
 --- a/src/main/java/net/minecraft/server/Eula.java
 +++ b/src/main/java/net/minecraft/server/Eula.java
 @@ -16,7 +16,7 @@ public class Eula {
@@ -26,7 +26,7 @@ index df44790b1c342d0a6ff794bea86319fa7498cbae..312f251e9df36f7537ee37fbac375c97
      public Eula(Path eulaFile) {
          this.file = eulaFile;
 -        this.agreed = SharedConstants.IS_RUNNING_IN_IDE || this.readFile();
-+        this.agreed = true; // AtelierSMP - We always agree to the EULA
++        this.agreed = true; // Atelier - We always agree to the EULA
      }
  
      private boolean readFile() {

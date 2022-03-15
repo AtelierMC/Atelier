@@ -7,8 +7,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = "ateliersmp"
-for (name in listOf("AtelierSMP-API", "AtelierSMP-Server")) {
+rootProject.name = "atelier"
+for (name in listOf("Atelier-API", "Atelier-Server")) {
     val projName = name.toLowerCase(Locale.ENGLISH)
     include(projName)
     findProject(":$projName")!!.projectDir = file(name)

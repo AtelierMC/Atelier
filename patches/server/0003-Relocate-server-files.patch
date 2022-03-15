@@ -3,9 +3,10 @@ From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
 Date: Tue, 1 Mar 2022 20:10:45 +0700
 Subject: [PATCH] Relocate server files
 
+World containers is not set by default in bukkit.yml
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-index 56330536c52fa327ef89d7a08e72557c6633c8bb..00cbecb1a4309661d40e5de069f53580c982e2f4 100644
+index 56330536c52fa327ef89d7a08e72557c6633c8bb..537641788c5c88277843fe7986f730f3ae6dd1e0 100644
 --- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 +++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 @@ -55,8 +55,8 @@ public class PufferfishConfig {
@@ -14,13 +15,13 @@ index 56330536c52fa327ef89d7a08e72557c6633c8bb..00cbecb1a4309661d40e5de069f53580
  	public static void load() throws IOException {
 -		File configFile = new File("pufferfish.yml");
 -		
-+		File configFile = new File("config", "pufferfish.yml"); // AtelierSMP - Relocate files
++		File configFile = new File("config", "pufferfish.yml"); // Atelier - Relocate files
 +
  		if (configFile.exists()) {
  			try {
  				config.load(configFile);
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index 1e0d261439255091a6f61485c0747231fbd5b1db..8246fb02f58a4e3e4100f1121351cf67080376ac 100644
+index 1e0d261439255091a6f61485c0747231fbd5b1db..fd50447e4a2e86a1fde6ee3eeef531972e4cea71 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
 @@ -141,12 +141,12 @@ public class Main {
@@ -28,18 +29,18 @@ index 1e0d261439255091a6f61485c0747231fbd5b1db..8246fb02f58a4e3e4100f1121351cf67
              // Paper start - fix SPIGOT-5824
              File file;
 -            File userCacheFile = new File("usercache.json");
-+            File userCacheFile = new File("storage", "usercache.json"); // AtelierSMP - Relocate files
++            File userCacheFile = new File("storage", "usercache.json"); // Atelier - Relocate files
              if (optionset.has("universe")) {
                  file = (File) optionset.valueOf("universe"); // CraftBukkit
                  userCacheFile = new File(file, "usercache.json");
              } else {
 -                file = new File(bukkitConfiguration.getString("settings.world-container", "."));
-+                file = new File("worlds"); // AtelierSMP - Use 'worlds' folder by default
++                file = new File("worlds"); // Atelier - Use 'worlds' folder by default
              }
              // Paper end - fix SPIGOT-5824
              YggdrasilAuthenticationService yggdrasilauthenticationservice = new com.destroystokyo.paper.profile.PaperAuthenticationService(Proxy.NO_PROXY); // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 111553443a7247db92b15819e9bbd717e4ace61b..e1d403b39b15451ccc73cc5dfefdcf87306aa9ef 100644
+index 111553443a7247db92b15819e9bbd717e4ace61b..71113c8051e28d52f02f2352ee1936e483e92fd2 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -122,10 +122,12 @@ import org.bukkit.event.player.PlayerRespawnEvent;
@@ -50,17 +51,17 @@ index 111553443a7247db92b15819e9bbd717e4ace61b..e1d403b39b15451ccc73cc5dfefdcf87
 -    public static final File IPBANLIST_FILE = new File("banned-ips.json");
 -    public static final File OPLIST_FILE = new File("ops.json");
 -    public static final File WHITELIST_FILE = new File("whitelist.json");
-+    // AtelierSMP start - Relocate files
++    // Atelier start - Relocate files
 +    public static final File USERBANLIST_FILE = new File("storage", "banned-players.json");
 +    public static final File IPBANLIST_FILE = new File("storage", "banned-ips.json");
 +    public static final File OPLIST_FILE = new File("storage", "ops.json");
 +    public static final File WHITELIST_FILE = new File("storage", "whitelist.json");
-+    // AtelierSMP end
++    // Atelier end
      private static final Logger LOGGER = LogUtils.getLogger();
      private static final int SEND_PLAYER_INFO_INTERVAL = 600;
      private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 2222c34754cc9ec878034a1c944683944facbed5..a7ac2143ce148b0b7afc192ff7b37d530b1437ca 100644
+index 23e2ad3be1786cfd3bf614d5fa464a70b0a73360..05b45d7aabd94f0f4b2bc8a2ec582ccfe35b5f29 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1073,7 +1073,10 @@ public final class CraftServer implements Server {
@@ -76,7 +77,7 @@ index 2222c34754cc9ec878034a1c944683944facbed5..a7ac2143ce148b0b7afc192ff7b37d53
  
          try {
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d26b62c3dd 100644
+index 46251aa9de5e0131a05262818cd2c8a2b8970365..e626d55dd3bf6b44eb8a94793c0ff3fde4f8e013 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -110,13 +110,13 @@ public class Main {
@@ -84,14 +85,14 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d2
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("bukkit.yml"))
-+                        .defaultsTo(new File("config", "bukkit.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "bukkit.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
  
                  acceptsAll(Main.asList("C", "commands-settings"), "File for command settings")
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("commands.yml"))
-+                        .defaultsTo(new File("config", "commands.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "commands.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
  
                  acceptsAll(Main.asList("forceUpgrade"), "Whether to force a world upgrade");
@@ -100,7 +101,7 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d2
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("spigot.yml"))
-+                        .defaultsTo(new File("config", "spigot.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "spigot.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
                  // Spigot End
  
@@ -109,7 +110,7 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d2
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("paper.yml"))
-+                        .defaultsTo(new File("config", "paper.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "paper.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
  
                  acceptsAll(asList("add-plugin", "add-extra-plugin-jar"), "Specify paths to extra plugin jars to be loaded in addition to those in the plugins folder. This argument can be specified multiple times, once for each extra plugin jar path.")
@@ -118,7 +119,7 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d2
                      .withRequiredArg()
                      .ofType(File.class)
 -                    .defaultsTo(new File("purpur.yml"))
-+                    .defaultsTo(new File("config", "purpur.yml")) // AtelierSMP - Relocate files
++                    .defaultsTo(new File("config", "purpur.yml")) // Atelier - Relocate files
                      .describedAs("Yml file");
                  // Purpur end
  
@@ -126,7 +127,7 @@ index 1726788b1364e5a16903c3ce7ad4559b8075495b..88bf1b0b94e1b0e5dfec8193c6dbf4d2
                  // Paper end
                  System.setProperty( "library.jansi.version", "Paper" ); // Paper - set meaningless jansi version to prevent git builds from crashing on Windows
                  System.out.println("Loading libraries, please wait...");
-+                java.nio.file.Files.createDirectories(java.nio.file.Paths.get("storage")); // AtelierSMP - Relocate files
++                java.nio.file.Files.createDirectories(java.nio.file.Paths.get("storage")); // Atelier - Relocate files
                  net.minecraft.server.Main.main(options);
              } catch (Throwable t) {
                  t.printStackTrace();
