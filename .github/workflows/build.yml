@@ -30,7 +30,7 @@ jobs:
       - name: Release jar
         run: |
           mkdir -p target
-          cp build/libs/ateliersmp-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/ateliersmp-${{ steps.version.outputs.mcversion }}.jar
+          cp build/libs/atelier-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/atelierclip-${{ steps.version.outputs.mcversion }}.jar
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
