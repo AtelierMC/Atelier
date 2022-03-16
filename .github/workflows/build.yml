@@ -37,4 +37,4 @@ jobs:
           automatic_release_tag: "${{ steps.version.outputs.mcversion }}"
           prerelease: false
           title: "Atelier ${{ steps.version.outputs.mcversion }} Release ${{ steps.date.outputs.date }}"
-          files: ./target/atelier-${{ steps.version.outputs.mcversion }}.jar
+          files: ./target/atelierclip-${{ steps.version.outputs.mcversion }}.jar
