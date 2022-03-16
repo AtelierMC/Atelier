@@ -3,7 +3,6 @@ From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
 Date: Tue, 1 Mar 2022 20:10:45 +0700
 Subject: [PATCH] Relocate server files
 
-World containers is not set by default in bukkit.yml
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 index 56330536c52fa327ef89d7a08e72557c6633c8bb..537641788c5c88277843fe7986f730f3ae6dd1e0 100644
