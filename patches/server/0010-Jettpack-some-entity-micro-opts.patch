@@ -6,7 +6,7 @@ Subject: [PATCH] Jettpack: some entity micro opts
 This patch was originally created under the GNU Lesser General Public License v3.0 for the "JettPack" project: https://gitlab.com/Titaniumtown/JettPack
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 856f362e8def21fb8d15c55c46fd17642e973d61..8267d5bc59951b6454d2b8c83ff3136b5552765a 100644
+index 8dabf66f544b930c9b8aa4981260406c17c04363..18dbcf1e54eb9f4930f2cc238a2ad33131d2a3af 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -1765,10 +1765,16 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, i
