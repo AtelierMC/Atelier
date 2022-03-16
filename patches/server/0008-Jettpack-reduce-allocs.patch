@@ -204,7 +204,7 @@ index 76d177d27735e93bbac5f9cf0b3556e929d72317..e5c3072dc63319859e3d04dc871acf74
      }
      // Paper start
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7a17c6634 100644
+index fd50447e4a2e86a1fde6ee3eeef531972e4cea71..4aa66a247be31b80958843f6427f82195619c18e 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
 @@ -80,7 +80,7 @@ public class Main {
@@ -217,7 +217,7 @@ index 8246fb02f58a4e3e4100f1121351cf67080376ac..b463d63063b72b8a941a587a0ccc65b7
          OptionSpec<Integer> optionspec11 = optionparser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
          OptionSpec<String> optionspec12 = optionparser.accepts("serverId").withRequiredArg();
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 30f7c8528f5432a4c3fd1d01310760a0648a82e5..8f6b50d85416333a3a5cd40cdfe4cb359c0a10c8 100644
+index b05dfd15f0a022a2fcf1b86978f82d605104182c..c18ed09a8ea6074bca953c11b36cf5f16168dcab 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1438,8 +1438,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -245,7 +245,7 @@ index 65f1f919a689f6f7960d731b250582bd521c4eea..c35ad916e1af768347bce23f0b0ea6df
  
              for (int j = 0; j < i; ++j) {
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 07031278c70f1c739d9a24d60ab6c16b2cb0a061..8372c52a1f20dcaece7be6cf513b11e104584cbd 100644
+index 46bef68497acc6fef0625383bc78dac702cfd7c7..65a82407b88ea1b18c7eb51091314ef79c1cc077 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -898,7 +898,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -327,7 +327,7 @@ index 40231e5a600f9a57bf079c7976143b724da582cf..9328309feee788797aeecaf9928dcbb8
  
          final String s;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index e1d403b39b15451ccc73cc5dfefdcf87306aa9ef..85272d696e5b1355bc38362e538c7dd2a2f9149d 100644
+index 71113c8051e28d52f02f2352ee1936e483e92fd2..7b88273f250cf426137148170de59d16def695be 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -318,7 +318,7 @@ public abstract class PlayerList {

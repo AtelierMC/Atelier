@@ -185,7 +185,7 @@ index 8267d5bc59951b6454d2b8c83ff3136b5552765a..c558240b34e3c0a8fee93b492c4f5307
      }
  
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 64b4ce3dc8b5e43125f668f5fc00b3f9809c843a..5220624361f981b2443676621c2eae3f87397f00 100644
+index 5b221b9026ed0a357669a0422bdff2524b5e372a..aeea25052cfbd9d6d632a4bcda018a9eb192655f 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
 @@ -673,7 +673,7 @@ public abstract class Player extends LivingEntity {

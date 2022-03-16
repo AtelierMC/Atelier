@@ -2043,7 +2043,7 @@ index ad3f0ff353a0448babde334641d1b1ac94779b07..15be778f249a959c327d84f43013dc47
      }
  
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 9120edc92c30233bc078501225b4f9ad95a3d020..70c7f479bf8e53f217268c5c6e7f222aff13db34 100644
+index 96f60ae61d2883f4ab266ce2e98c44527df75af5..603d527b4a720d048288129e1a4499fdf363e030 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -162,9 +162,14 @@ import org.bukkit.event.weather.LightningStrikeEvent;

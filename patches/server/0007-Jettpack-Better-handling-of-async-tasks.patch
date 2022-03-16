@@ -62,7 +62,7 @@ index d6a57cdad2c92521a800cb18d060d9d6d627a8c0..aa7d17ad202e51fd3f43aac2ff7d8d7f
      public static Runnable once(Runnable run) {
          AtomicBoolean ran = new AtomicBoolean(false);
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 69917030089f29ca0b26e13b8182c966103e6cd6..30f7c8528f5432a4c3fd1d01310760a0648a82e5 100644
+index 58c1a5d3cfaea84c300339c448d6e63be425eb71..b05dfd15f0a022a2fcf1b86978f82d605104182c 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1070,6 +1070,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -178,7 +178,7 @@ index 9c1aff17aabd062640e3f451a2ef8c50a7c62f10..d6232c384de885ff1ef5c52ce2a61f23
          }
          return false;
 diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
-index 04e836cf07b64a99f87e016834f9e365b29f0cc2..cb5ecb860d4360c0c1101e53209d3be61bbc2196 100644
+index b647881b852b48b47ccf5fca01e02eeac3d1a755..8882b36a679ff5a623bd47c04159b57a3aa6fbe2 100644
 --- a/src/main/java/org/spigotmc/WatchdogThread.java
 +++ b/src/main/java/org/spigotmc/WatchdogThread.java
 @@ -141,6 +141,7 @@ public class WatchdogThread extends Thread
