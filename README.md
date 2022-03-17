@@ -69,11 +69,11 @@ To install the `atelier-api` and `atelier` dependencies to your local Maven repo
 
 
 ## Credits
-1. [Purpur](https://github.com/PurpurMC/Purpur/)
+1. [Pearl](https://github.com/Pearl-Project/Pearl)
 - Upstream
 2. [JettPack](https://gitlab.com/Titaniumtown/JettPack)
 - Better handling of async tasks
 3. [Slice](https://github.com/Cryptite/Slice)
 - Reduction in unnecessary packets.
 4. [EMC](https://github.com/starlis/empirecraft) 
-- Vanilla enchaments
+- Vanilla enchantments
