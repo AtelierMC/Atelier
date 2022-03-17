@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Aikar <aikar@aikar.co>
+Date: Thu, 3 Mar 2022 14:17:15 +0700
+Subject: [PATCH] EMC: Don't save fireworks
+
+Fireworks can bug out and not detonate, and an automated
+launcher can very easily fill a chunk.
+
+Prevent saving Fireworks so that chunk unloads will wipe a chunks fireworks in this case.
+
+diff --git a/src/main/java/net/minecraft/world/entity/projectile/FireworkRocketEntity.java b/src/main/java/net/minecraft/world/entity/projectile/FireworkRocketEntity.java
+index 001d252763a689351a4df2ef830b3abb85a09e16..dce054800c8cc96e7589660b490b8a829629de89 100644
+--- a/src/main/java/net/minecraft/world/entity/projectile/FireworkRocketEntity.java
++++ b/src/main/java/net/minecraft/world/entity/projectile/FireworkRocketEntity.java
+@@ -359,6 +359,13 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
+         return false;
+     }
+ 
++    // EMC start
++    @Override
++    public boolean shouldBeSaved() {
++        return false;
++    }
++    // EMC end
++
+     // Purpur start
+     @Override
+     protected int getPurpurDespawnRate() {

@@ -1,0 +1,103 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Gardling <titaniumtown@gmail.com>
+Date: Wed, 16 Mar 2022 09:27:24 +0700
+Subject: [PATCH] Jettpack: Use MCUtil.asyncExecutor for MAIN_WORKER_EXECUTOR
+ in Util
+
+This patch was originally created under the GNU Lesser General Public License v3.0 for the "JettPack" project: https://gitlab.com/Titaniumtown/JettPack
+
+diff --git a/src/main/java/me/titaniumtown/util/ServerWorkerWrapper.java b/src/main/java/me/titaniumtown/util/ServerWorkerWrapper.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..49172b499f2646c9f94c9403fe8489236166ff6f
+--- /dev/null
++++ b/src/main/java/me/titaniumtown/util/ServerWorkerWrapper.java
+@@ -0,0 +1,24 @@
++package me.titaniumtown.util;
++
++import com.google.common.base.Preconditions;
++import net.minecraft.Util;
++
++public final class ServerWorkerWrapper implements Runnable {
++    private final Runnable internalRunnable;
++
++    public ServerWorkerWrapper(Runnable runnable) {
++        this.internalRunnable = Preconditions.checkNotNull(runnable, "internalRunnable");
++    }
++
++    @Override
++    public final void run() {
++        try {
++            this.internalRunnable.run();
++            return;
++        } catch (Throwable throwable) {
++            Util.onThreadException(Thread.currentThread(), throwable);
++            return;
++        }
++    }
++}
++
+diff --git a/src/main/java/net/minecraft/Util.java b/src/main/java/net/minecraft/Util.java
+index 8cb2978d5c2d2aa341fd933d2515c0c617577d1c..352ac5a6c25c8babfee822cf96689984754cc079 100644
+--- a/src/main/java/net/minecraft/Util.java
++++ b/src/main/java/net/minecraft/Util.java
+@@ -62,6 +62,13 @@ import net.minecraft.util.datafix.DataFixers;
+ import net.minecraft.world.level.block.state.properties.Property;
+ import org.apache.commons.io.IOUtils;
+ import org.slf4j.Logger;
++// Jettpack start
++import java.util.concurrent.AbstractExecutorService;
++import me.titaniumtown.util.ServerWorkerWrapper;
++import net.minecraft.server.MCUtil;
++import java.util.Collections;
++// Jettpack end
++
+ 
+ public class Util {
+     static final Logger LOGGER = LogUtils.getLogger();
+@@ -149,7 +156,45 @@ public class Util {
+         if (i <= 0) {
+             executorService = MoreExecutors.newDirectExecutorService();
+         } else {
+-            executorService = new java.util.concurrent.ThreadPoolExecutor(i, i,0L, TimeUnit.MILLISECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), target -> new net.minecraft.server.ServerWorkerThread(target, s, priorityModifier));
++            // Jettpack start
++            executorService = Integer.getInteger("Paper.WorkerThreadCount", i) <= 0 ? MoreExecutors.newDirectExecutorService() : new AbstractExecutorService() {
++                private volatile boolean shutdown = false;
++
++                @Override
++                public final List<Runnable> shutdownNow() {
++                    this.shutdown = true;
++                    return Collections.emptyList();
++                }
++
++                @Override
++                public final void shutdown() {
++                    this.shutdown = true;
++                }
++
++                @Override
++                public final boolean isShutdown() {
++                    return this.shutdown;
++                }
++
++                @Override
++                public final boolean isTerminated() {
++                    return this.shutdown;
++                }
++
++                @Override
++                public final boolean awaitTermination(long l2, TimeUnit timeUnit) throws InterruptedException {
++                    if (!this.shutdown) {
++                        throw new UnsupportedOperationException();
++                    }
++                    return true;
++                }
++
++                @Override
++                public final void execute(Runnable runnable) {
++                    MCUtil.asyncExecutor.execute(new ServerWorkerWrapper(runnable));
++                }
++            };
++            // Jettpack end
+         }
+         /*
+                     @Override

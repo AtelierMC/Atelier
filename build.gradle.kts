@@ -4,7 +4,7 @@ plugins {
     java
     `maven-publish`
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
-    id("io.papermc.paperweight.patcher") version "1.3.4"
+    id("io.papermc.paperweight.patcher") version "1.3.5"
 }
 
 repositories {
@@ -61,23 +61,23 @@ subprojects {
 }
 
 paperweight {
-    serverProject.set(project(":ateliersmp-server"))
+    serverProject.set(project(":atelier-server"))
 
     remapRepo.set("https://maven.fabricmc.net/")
     decompileRepo.set("https://files.minecraftforge.net/maven/")
 
-    useStandardUpstream("purpur") {
-        url.set(github("PurpurMC", "Purpur"))
-        ref.set(providers.gradleProperty("purpurCommit"))
+    useStandardUpstream("pearl") {
+        url.set(github("Pearl-Project", "Pearl"))
+        ref.set(providers.gradleProperty("pearlCommit"))
 
         withStandardPatcher {
-            baseName("Purpur")
+            baseName("pearl")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
-            apiOutputDir.set(layout.projectDirectory.dir("AtelierSMP-API"))
+            apiOutputDir.set(layout.projectDirectory.dir("Atelier-API"))
 
             serverPatchDir.set(layout.projectDirectory.dir("patches/server"))
-            serverOutputDir.set(layout.projectDirectory.dir("AtelierSMP-Server"))
+            serverOutputDir.set(layout.projectDirectory.dir("Atelier-Server"))
         }
     }
 }

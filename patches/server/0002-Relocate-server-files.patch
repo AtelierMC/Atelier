@@ -5,39 +5,41 @@ Subject: [PATCH] Relocate server files
 
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-index 17bc75a0f0e665a3b7abaaf2bf197abe3cd2af20..edc1e27764ece52614f092cf3f7c0a602e2f8eaf 100644
+index 56330536c52fa327ef89d7a08e72557c6633c8bb..537641788c5c88277843fe7986f730f3ae6dd1e0 100644
 --- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 +++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-@@ -55,7 +55,7 @@ public class PufferfishConfig {
+@@ -55,8 +55,8 @@ public class PufferfishConfig {
  	}
  	
  	public static void load() throws IOException {
 -		File configFile = new File("pufferfish.yml");
-+		File configFile = new File("config", "pufferfish.yml"); // AtelierSMP - Relocate files
- 		
+-		
++		File configFile = new File("config", "pufferfish.yml"); // Atelier - Relocate files
++
  		if (configFile.exists()) {
  			try {
+ 				config.load(configFile);
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index e2c8f716af55ebb7e4233c2a3d6515f8f4a239fa..93f21bc3e5ee515e60faeb9ea8232783a4e1c1fd 100644
+index 490f5d86df7fff6537c7080361a7df80951647df..4aa66a247be31b80958843f6427f82195619c18e 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -138,12 +138,12 @@ public class Main {
+@@ -141,12 +141,12 @@ public class Main {
              org.spigotmc.SpigotConfig.disabledAdvancements = spigotConfiguration.getStringList("advancements.disabled"); // Paper - fix SPIGOT-5885, must be set early in init
              // Paper start - fix SPIGOT-5824
              File file;
 -            File userCacheFile = new File("usercache.json");
-+            File userCacheFile = new File("storage", "usercache.json"); // AtelierSMP - Relocate files
++            File userCacheFile = new File("storage", "usercache.json"); // Atelier - Relocate files
              if (optionset.has("universe")) {
                  file = (File) optionset.valueOf("universe"); // CraftBukkit
                  userCacheFile = new File(file, "usercache.json");
              } else {
 -                file = new File(bukkitConfiguration.getString("settings.world-container", "."));
-+                file = new File("worlds"); // AtelierSMP - Use 'worlds' folder by default
++                file = new File("worlds"); // Atelier - Use 'worlds' folder by default
              }
              // Paper end - fix SPIGOT-5824
              YggdrasilAuthenticationService yggdrasilauthenticationservice = new com.destroystokyo.paper.profile.PaperAuthenticationService(Proxy.NO_PROXY); // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index ebddd006afe4960ac90642d4683c5cc8ef0ac33e..20a4925dbee30a4ff2bd9ab78c538cd6bdbdf92b 100644
+index b2e6ca698e0f20f11976e0671cd5281f975968ae..7b88273f250cf426137148170de59d16def695be 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -122,10 +122,12 @@ import org.bukkit.event.player.PlayerRespawnEvent;
@@ -48,34 +50,57 @@ index ebddd006afe4960ac90642d4683c5cc8ef0ac33e..20a4925dbee30a4ff2bd9ab78c538cd6
 -    public static final File IPBANLIST_FILE = new File("banned-ips.json");
 -    public static final File OPLIST_FILE = new File("ops.json");
 -    public static final File WHITELIST_FILE = new File("whitelist.json");
-+    // AtelierSMP start - Relocate files
++    // Atelier start - Relocate files
 +    public static final File USERBANLIST_FILE = new File("storage", "banned-players.json");
 +    public static final File IPBANLIST_FILE = new File("storage", "banned-ips.json");
 +    public static final File OPLIST_FILE = new File("storage", "ops.json");
 +    public static final File WHITELIST_FILE = new File("storage", "whitelist.json");
-+    // AtelierSMP end
-     private static final Logger LOGGER = LogManager.getLogger();
++    // Atelier end
+     private static final Logger LOGGER = LogUtils.getLogger();
      private static final int SEND_PLAYER_INFO_INTERVAL = 600;
      private static final SimpleDateFormat BAN_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 1fe2c8e7fdf8fe5f688d7dbddc17d1e6e69cfc32..9796b40bee22d6b7b1c37af13c873cacff587924 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -1073,7 +1073,10 @@ public final class CraftServer implements Server {
+ 
+     @SuppressWarnings({ "unchecked", "finally" })
+     private void loadCustomPermissions() {
+-        File file = new File(this.configuration.getString("settings.permissions-file"));
++        // AtelierMC start - Relocate files
++        String path = this.configuration.getString("settings.permissions-file");
++        File file = new File((path != null && path.contains("/")) ? path : "config/" + path);
++        // AtelierMC end
+         FileInputStream stream;
+ 
+         try {
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 6766e022f94d5604fcaf39a6ff5e70d82d764726..34bd10c2d99f953cb100eea12f0133d93bc7051b 100644
+index 639dc3bb56cc90b84da08dc93cea89c658ed6dc8..06deabcf25202428e9f6a53850d74cfe47bec866 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
-@@ -110,7 +110,7 @@ public class Main {
+@@ -110,13 +110,13 @@ public class Main {
                  acceptsAll(Main.asList("b", "bukkit-settings"), "File for bukkit settings")
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("bukkit.yml"))
-+                        .defaultsTo(new File("config", "bukkit.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "bukkit.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
  
                  acceptsAll(Main.asList("C", "commands-settings"), "File for command settings")
+                         .withRequiredArg()
+                         .ofType(File.class)
+-                        .defaultsTo(new File("commands.yml"))
++                        .defaultsTo(new File("config", "commands.yml")) // Atelier - Relocate files
+                         .describedAs("Yml file");
+ 
+                 acceptsAll(Main.asList("forceUpgrade"), "Whether to force a world upgrade");
 @@ -135,7 +135,7 @@ public class Main {
                  acceptsAll(Main.asList("S", "spigot-settings"), "File for spigot settings")
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("spigot.yml"))
-+                        .defaultsTo(new File("config", "spigot.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "spigot.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
                  // Spigot End
  
@@ -84,7 +109,7 @@ index 6766e022f94d5604fcaf39a6ff5e70d82d764726..34bd10c2d99f953cb100eea12f0133d9
                          .withRequiredArg()
                          .ofType(File.class)
 -                        .defaultsTo(new File("paper.yml"))
-+                        .defaultsTo(new File("config", "paper.yml")) // AtelierSMP - Relocate files
++                        .defaultsTo(new File("config", "paper.yml")) // Atelier - Relocate files
                          .describedAs("Yml file");
  
                  acceptsAll(asList("add-plugin", "add-extra-plugin-jar"), "Specify paths to extra plugin jars to be loaded in addition to those in the plugins folder. This argument can be specified multiple times, once for each extra plugin jar path.")
@@ -93,15 +118,28 @@ index 6766e022f94d5604fcaf39a6ff5e70d82d764726..34bd10c2d99f953cb100eea12f0133d9
                      .withRequiredArg()
                      .ofType(File.class)
 -                    .defaultsTo(new File("purpur.yml"))
-+                    .defaultsTo(new File("config", "purpur.yml")) // AtelierSMP - Relocate files
++                    .defaultsTo(new File("config", "purpur.yml")) // Atelier - Relocate files
                      .describedAs("Yml file");
                  // Purpur end
  
-@@ -298,6 +298,7 @@ public class Main {
+@@ -294,6 +294,7 @@ public class Main {
                  // Paper end
                  System.setProperty( "library.jansi.version", "Paper" ); // Paper - set meaningless jansi version to prevent git builds from crashing on Windows
                  System.out.println("Loading libraries, please wait...");
-+                java.nio.file.Files.createDirectories(java.nio.file.Paths.get("storage")); // AtelierSMP - Relocate files
++                java.nio.file.Files.createDirectories(java.nio.file.Paths.get("storage")); // Atelier - Relocate files
                  net.minecraft.server.Main.main(options);
              } catch (Throwable t) {
                  t.printStackTrace();
+diff --git a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+index 74b49f4c1649c161c3c785be7708f5970989f7f3..8473ed353f243496fbb7de368c23c4bdbd69229d 100644
+--- a/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
++++ b/src/main/java/org/bukkit/craftbukkit/help/HelpYamlReader.java
+@@ -25,7 +25,7 @@ public class HelpYamlReader {
+     public HelpYamlReader(Server server) {
+         this.server = server;
+ 
+-        File helpYamlFile = new File("help.yml");
++        File helpYamlFile = new File("config", "help.yml"); // AtelierMC - Relocate files
+         YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("configurations/help.yml"), Charsets.UTF_8));
+ 
+         try {

@@ -45,7 +45,7 @@ out/
 # other stuff
 run/
 
-AtelierSMP-API
-AtelierSMP-Server
+Atelier-API
+Atelier-Server
 
 !gradle/wrapper/gradle-wrapper.jar

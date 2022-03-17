@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <38831897+JustMangoT@users.noreply.github.com>
+Date: Thu, 3 Mar 2022 10:11:45 +0700
+Subject: [PATCH] Default commands changed
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index b7fa160a305ee89004c11a3d8a01ac3b721f59b6..126efd9cda4ca5b27e20fc24550cea0c38108cfb 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -48,7 +48,17 @@ public class VersionCommand extends BukkitCommand {
+ 
+     @Override
+     public boolean execute(@NotNull CommandSender sender, @NotNull String currentAlias, @NotNull String[] args) {
+-        if (!testPermission(sender)) return true;
++        // Atelier start
++        if (!testPermission(sender)) {
++            sender.sendMessage(
++                "§3----------------------------------------------------",
++                "§fThis server is running on §b☃ §fAtelierSMP software",
++                "§fMade with determination by §eMangoStudio §fx §eAtelierMC",
++                "§3----------------------------------------------------"
++            );
++            return true;
++        }
++        // Atelier end
+ 
+         if (args.length == 0) {
+             //sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")"); // Paper - moved to setVersionMessage
