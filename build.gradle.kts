@@ -71,7 +71,8 @@ paperweight {
         ref.set(providers.gradleProperty("pearlCommit"))
 
         withStandardPatcher {
-            baseName("pearl")
+            apiSourceDirPath.set("Pearl-API")
+            serverSourceDirPath.set("Pearl-Server")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
             apiOutputDir.set(layout.projectDirectory.dir("Atelier-API"))
