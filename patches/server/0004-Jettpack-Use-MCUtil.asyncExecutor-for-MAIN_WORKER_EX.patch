@@ -37,7 +37,7 @@ index 0000000000000000000000000000000000000000..49172b499f2646c9f94c9403fe848923
 +}
 +
 diff --git a/src/main/java/net/minecraft/Util.java b/src/main/java/net/minecraft/Util.java
-index 0bfe2558b7675e37c9f04a55595619244e34f21b..7f4209634550db46400fcbdec2ad1657c2ae0769 100644
+index 8cb2978d5c2d2aa341fd933d2515c0c617577d1c..352ac5a6c25c8babfee822cf96689984754cc079 100644
 --- a/src/main/java/net/minecraft/Util.java
 +++ b/src/main/java/net/minecraft/Util.java
 @@ -62,6 +62,13 @@ import net.minecraft.util.datafix.DataFixers;

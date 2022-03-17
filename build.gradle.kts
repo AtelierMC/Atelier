@@ -66,12 +66,12 @@ paperweight {
     remapRepo.set("https://maven.fabricmc.net/")
     decompileRepo.set("https://files.minecraftforge.net/maven/")
 
-    useStandardUpstream("purpur") {
-        url.set(github("PurpurMC", "Purpur"))
-        ref.set(providers.gradleProperty("purpurCommit"))
+    useStandardUpstream("pearl") {
+        url.set(github("Pearl-Project", "Pearl"))
+        ref.set(providers.gradleProperty("pearlCommit"))
 
         withStandardPatcher {
-            baseName("Purpur")
+            baseName("pearl")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
             apiOutputDir.set(layout.projectDirectory.dir("Atelier-API"))
