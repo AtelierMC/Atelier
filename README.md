@@ -7,7 +7,7 @@
 [![Github Actions Build](https://img.shields.io/github/workflow/status/AtelierMC/Atelier/Build?event=push&logo=github)](https://github.com/AtelierMC/Atelier/releases/latest)
 [![Join us on Discord](https://img.shields.io/discord/814127567207530527.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://ateliermc.tech/discord)
 
-#### Atelier is a high performance fork of [Purpur](https://github.com/PurpurMC/Purpur) with the aim of modifying the source code for some specific purpose. 
+#### Atelier is a high performance fork of [Pearl](https://github.com/Pearl-Project/Pearl) with the aim of modifying the source code for some specific purpose. 
 </div>
 
 ## License
@@ -15,7 +15,7 @@
 
 All patches are licensed under the MIT license, unless otherwise noted in the patch headers.
 
-See [PurpurMC/Purpur](https://github.com/PurpurMC/Purpur), and [PaperMC/Paperweight](https://github.com/PaperMC/paperweight) for the license of material used by this project.
+See [Pearl-Project/Pearl](https://github.com/Pearl-Project/Pearl), and [PaperMC/Paperweight](https://github.com/PaperMC/paperweight) for the license of material used by this project.
 
 
 ## Downloads & Usages
