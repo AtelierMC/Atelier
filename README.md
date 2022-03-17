@@ -71,16 +71,9 @@ To install the `atelier-api` and `atelier` dependencies to your local Maven repo
 ## Credits
 1. [Purpur](https://github.com/PurpurMC/Purpur/)
 - Upstream
-2. [PaperPR](https://github.com/PaperMC/Paper/pulls)
-- Optimize despawn when no player is on range
-- Optimize Varints
-- Use DataConverter for itemstack/entity
-- AlternateCurrent (Original author: [SpaceWalkerRS](https://github.com/SpaceWalkerRS/alternate-current))
-3. [JettPack](https://gitlab.com/Titaniumtown/JettPack)
-- Reduced allocations, reducing memory usage and therefore the frequency at which garbage collection runs.
+2. [JettPack](https://gitlab.com/Titaniumtown/JettPack)
 - Better handling of async tasks
-4. [Slice](https://github.com/Cryptite/Slice)
+3. [Slice](https://github.com/Cryptite/Slice)
 - Reduction in unnecessary packets.
-5. [EMC](https://github.com/starlis/empirecraft) 
-- Hopper optimization.
+4. [EMC](https://github.com/starlis/empirecraft) 
 - Vanilla enchaments
