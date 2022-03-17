@@ -14,7 +14,7 @@ pearl=$(curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/
 updated=""
 logsuffix=""
 if [ ! -z "$pearl" ]; then
-    logsuffix="$logsuffix\n\nPearl Changes:\n$purpur"
+    logsuffix="$logsuffix\n\nPearl Changes:\n$pearl"
     updated="Pearl"
 fi
 disclaimer="Upstream has released updates that appear to apply and compile correctly"
