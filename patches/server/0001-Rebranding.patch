@@ -5,7 +5,7 @@ Subject: [PATCH] Rebranding
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index fe0223e68aa2ad0ec0db0130482e33ee09bf755d..65e931e3e81808c174f0de39e22d142344190120 100644
+index be1c935e292aaa9135898297c9fa3a457bce8395..392510b42e99f80d2847a36b7117d6c2c205be17 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -18,7 +18,7 @@ repositories {
@@ -27,7 +27,7 @@ index fe0223e68aa2ad0ec0db0130482e33ee09bf755d..65e931e3e81808c174f0de39e22d1423
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
 diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-index 03c2c6ac2b7092192de0b471bb4fe36c4e286775..ef0160a9bb31774a2f9dad6bb591feef83956843 100644
+index 49a2c5e0770f597243dbe055549664f45272f324..e2da86bb24a1d0cf2c53dd65bb59e7aff09c1f89 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 @@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
@@ -44,9 +44,9 @@ index 03c2c6ac2b7092192de0b471bb4fe36c4e286775..ef0160a9bb31774a2f9dad6bb591feef
      @Override
      public Component getVersionMessage(@Nonnull String serverVersion) {
 -        String[] parts = serverVersion.substring("git-Pearl-".length()).split("[-\\s]"); // Pearl
--        final Component updateMessage = getUpdateStatusMessage("Pearl-Project/Pearl", "master", parts[0]); // Pearl
+-        final Component updateMessage = getUpdateStatusMessage("Pearl-Project/Pearl", "main", parts[0]); // Pearl
 +        String[] parts = serverVersion.substring("git-Atelier-".length()).split("[-\\s]"); // Atelier
-+        final Component updateMessage = getUpdateStatusMessage("AtelierMC/Atelier", "master", parts[0]); // Atelier
++        final Component updateMessage = getUpdateStatusMessage("AtelierMC/Atelier", "main", parts[0]); // Atelier
          final Component history = getHistory();
  
          return history != null ? Component.join(net.kyori.adventure.text.JoinConfiguration.separator(Component.newline()), history, updateMessage) : updateMessage; // Purpur
@@ -73,7 +73,7 @@ index 893389bb642390ce33bd0ecebb178d544f5759ec..f1aac5ffa9f1c2184c54a12fd0df76f1
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 23bff2e531e6cb7aeb4658e9038f2011a8869b64..bcc5aa69a03026f246a90eb2b6580f57d91c6257 100644
+index 7208789225d3cd7640129490e85a676e9ed0a924..afb1ce5a1f454c047ce6aa35adfc7c13c3dd30ff 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1723,7 +1723,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -86,7 +86,7 @@ index 23bff2e531e6cb7aeb4658e9038f2011a8869b64..bcc5aa69a03026f246a90eb2b6580f57
  
      public SystemReport fillSystemReport(SystemReport details) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index b1be7fe428ff9847abb604054140cdf6539cdaab..1fe2c8e7fdf8fe5f688d7dbddc17d1e6e69cfc32 100644
+index a7ebad4981376b2f4555332fe62d81428a8351d9..690845b17a1024e5c58f832d4469672d2b7da8e2 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -248,7 +248,7 @@ import javax.annotation.Nullable; // Paper
