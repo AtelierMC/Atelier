@@ -7,7 +7,7 @@ set -e
 PS1="$"
 
 current=$(cat gradle.properties | grep pearlCommit | sed 's/pearlCommit = //')
-upstream=$(git ls-remote https://github.com/Pearl-Project/Pearl | grep master | cut -f 1)
+upstream=$(git ls-remote https://github.com/Pearl-Project/Pearl | grep main | cut -f 1)
 
 if [ "$current" != "$upstream" ]; then
     sed -i 's/pearlCommit = .*/pearlCommit = '"$upstream"'/' gradle.properties
