@@ -5,16 +5,16 @@ Subject: [PATCH] Relocate server files
 
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
-index cd03fed32807fd943fdeee8571c1648b8bd567d0..fcec9573ee717589a86b238451aaa8f800d8c85a 100644
+index 56330536c52fa327ef89d7a08e72557c6633c8bb..bc1ecc9a974beda51e3cae72ee81ff3420d31d34 100644
 --- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 +++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
 @@ -55,7 +55,7 @@ public class PufferfishConfig {
  	}
- 
+ 	
  	public static void load() throws IOException {
 -		File configFile = new File("pufferfish.yml");
 +		File configFile = new File("config", "pufferfish.yml"); // Atelier - Relocate files
- 
+ 		
  		if (configFile.exists()) {
  			try {
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
